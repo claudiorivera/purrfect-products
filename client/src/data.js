@@ -1,6 +1,7 @@
 export default {
   products: [
     {
+      _id: 1,
       name: "Botanicals Catnip Lavender",
       image: "/images/botanicals-catnip-lavender.jpg",
       price: 10,
@@ -10,6 +11,7 @@ export default {
       category: "Miscellaneous",
     },
     {
+      _id: 2,
       name: "Air Prey Telescoping Wand",
       image: "/images/air-prey-telescoping-wand.jpg",
       price: 12,
@@ -19,6 +21,7 @@ export default {
       category: "Toys",
     },
     {
+      _id: 3,
       name: "Country Dinner",
       image: "/images/country-style-dinner.jpg",
       price: 1,
