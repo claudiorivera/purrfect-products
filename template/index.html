@@ -10,6 +10,9 @@
     <div class="grid-container">
       <header class="header">
         <div class="brand">
+          <button onclick="openMenu()">
+            &#9776;
+          </button>
           <a href="index.html">Purr-fect Products!</a>
         </div>
         <div class="header-links">
@@ -17,35 +20,18 @@
           <a href="signin.html">Sign In</a>
         </div>
       </header>
+      <aside class="sidebar">
+        <h3>Shopping Categories</h3>
+        <button class="sidebar-close-button" onclick="closeMenu()">X</button>
+        <ul>
+          <li><a href="#">Toys</a></li>
+          <li><a href="#">Food</a></li>
+          <li><a href="#">Miscellaneous</a></li>
+        </ul>
+      </aside>
       <main class="main">
         <div class="content">
           <ul class="products">
-            <li>
-              <div class="product">
-                <img
-                  class="product-image"
-                  src="./images/catnip.jpg"
-                  alt="Cat Nip"
-                />
-                <div class="product-name"><a href="#">Cat Nip</a></div>
-                <div class="product-brand">Kong</div>
-                <div class="product-price">$10</div>
-                <div class="product-rating">4.5 Stars (10 Reviews)</div>
-              </div>
-            </li>
-            <li>
-              <div class="product">
-                <img
-                  class="product-image"
-                  src="./images/catnip.jpg"
-                  alt="Cat Nip"
-                />
-                <div class="product-name"><a href="#">Cat Nip</a></div>
-                <div class="product-brand">Kong</div>
-                <div class="product-price">$10</div>
-                <div class="product-rating">4.5 Stars (10 Reviews)</div>
-              </div>
-            </li>
             <li>
               <div class="product">
                 <img
@@ -77,5 +63,14 @@
       </main>
       <footer class="footer">All rights reserved 😻</footer>
     </div>
+    <script>
+      const openMenu = () => {
+        document.querySelector(".sidebar").classList.add("open");
+      };
+
+      const closeMenu = () => {
+        document.querySelector(".sidebar").classList.remove("open");
+      };
+    </script>
   </body>
 </html>
