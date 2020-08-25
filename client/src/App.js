@@ -36,13 +36,13 @@ function App() {
           </button>
           <ul>
             <li>
-              <a href="#">Toys</a>
+              <a href="/categories/toys">Toys</a>
             </li>
             <li>
-              <a href="#">Food</a>
+              <a href="/categories/food">Food</a>
             </li>
             <li>
-              <a href="#">Miscellaneous</a>
+              <a href="/categories/miscellaneous">Miscellaneous</a>
             </li>
           </ul>
         </aside>
@@ -53,7 +53,10 @@ function App() {
           </div>
         </main>
         <footer className="footer">
-          All rights reserved <span>😻</span>
+          All rights reserved
+          <span role="img" aria-label="cat with heart eyes emoji">
+            😻
+          </span>
         </footer>
       </div>
     </BrowserRouter>
