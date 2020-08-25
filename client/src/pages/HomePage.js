@@ -6,7 +6,7 @@ const HomePage = (props) => {
   return (
     <ul className="products">
       {data.products.map((product) => (
-        <li>
+        <li key={product._id}>
           <div className="product">
             <Link to={`/products/${product._id}`}>
               <img
@@ -19,7 +19,7 @@ const HomePage = (props) => {
             <div className="product-brand">{product.brand}</div>
             <div className="product-price">${product.price}</div>
             <div className="product-rating">
-              {product.rating} Stars ({product.numReviews} Reviews)
+              {product.rating} Stars ({product.numberOfReviews} Reviews)
             </div>
           </div>
         </li>
