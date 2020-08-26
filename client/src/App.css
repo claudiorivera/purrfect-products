@@ -97,15 +97,18 @@ a:hover {
 }
 
 .details-image {
-  flex: 2 1 30rem;
+  flex: 2 1 20rem;
+  align-self: center;
+  padding: 1rem;
 }
 
 .details-image img {
-  max-width: 30rem;
+  max-width: 20rem;
   width: 100%;
 }
 .details-info {
-  flex: 1 1 15rem;
+  flex: 3 1 15rem;
+  padding: 1rem;
 }
 .details-action {
   flex: 1 1 15rem;
