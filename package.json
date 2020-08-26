@@ -1,11 +1,22 @@
 {
   "name": "shopping-site-tutorial",
   "version": "1.0.0",
-  "description": "A shopping site",
+  "description": "A shopping site for cats",
   "author": "Claudio Rivera <me@claudiorivera.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "start": "node server/server",
+    "dev": "nodemon server/server"
+  },
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.11.0",
+    "nodemon": "^2.0.4"
   }
 }
