@@ -1,0 +1,11 @@
+{
+  "name": "shopping-site-tutorial",
+  "version": "1.0.0",
+  "description": "A shopping site",
+  "author": "Claudio Rivera <me@claudiorivera.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
