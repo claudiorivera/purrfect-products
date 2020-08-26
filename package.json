@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "start": "node server/server",
-    "dev": "nodemon server/server"
+    "dev": "nodemon --watch server --exec babel-node server/server.js"
   },
   "dependencies": {
     "express": "^4.17.1"
