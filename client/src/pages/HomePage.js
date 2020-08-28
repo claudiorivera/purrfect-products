@@ -1,11 +1,24 @@
-import React from "react";
-import data from "../data";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { getAllProducts } from "../actions/productActions";
 
 const HomePage = (props) => {
-  return (
+  const productList = useSelector((state) => state.productList);
+  const { products, loading, error } = productList;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, []);
+
+  return loading ? (
+    <div>Loading...</div>
+  ) : error ? (
+    <div>{error}</div>
+  ) : (
     <ul className="products">
-      {data.products.map((product) => (
+      {products.map((product) => (
         <li key={product._id}>
           <div className="product">
             <Link to={`/products/${product._id}`}>
