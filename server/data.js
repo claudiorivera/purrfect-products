@@ -3,6 +3,7 @@ export default {
     {
       _id: 1,
       name: "Botanicals Catnip Lavender",
+      qtyInStock: 7,
       image: "/images/botanicals-catnip-lavender.jpg",
       price: 10,
       brand: "Kong",
@@ -16,6 +17,7 @@ export default {
     {
       _id: 2,
       name: "Air Prey Telescoping Wand",
+      qtyInStock: 3,
       image: "/images/air-prey-telescoping-wand.jpg",
       price: 12,
       brand: "Jackson Galaxy",
@@ -29,6 +31,7 @@ export default {
     {
       _id: 3,
       name: "Country Dinner",
+      qtyInStock: 36,
       image: "/images/country-style-dinner.jpg",
       price: 1,
       brand: "Friskies",
