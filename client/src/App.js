@@ -1,8 +1,9 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter, Route, Link } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import ProductPage from "./pages/ProductPage";
+import Home from "./pages/Home";
+import Product from "./pages/Product";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
@@ -48,8 +49,9 @@ function App() {
         </aside>
         <main className="main">
           <div className="content">
-            <Route path="/products/:id" component={ProductPage} />
-            <Route path="/" component={HomePage} exact />
+            <Route path="/products/:id" component={Product} />
+            <Route path="/cart/:id?" component={Cart} />
+            <Route path="/" component={Home} exact />
           </div>
         </main>
         <footer className="footer">
