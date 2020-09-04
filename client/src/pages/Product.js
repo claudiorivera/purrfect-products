@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getProductDetails } from "../actions/productActions";
 
-const ProductPage = (props) => {
+const Product = (props) => {
   const [qty, setQty] = useState(1);
   const productDetails = useSelector((state) => state.productDetails);
   const { product, loading, error } = productDetails;
@@ -97,4 +97,4 @@ const ProductPage = (props) => {
   );
 };
 
-export default ProductPage;
+export default Product;
