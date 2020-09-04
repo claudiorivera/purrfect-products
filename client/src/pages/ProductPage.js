@@ -13,6 +13,10 @@ const ProductPage = (props) => {
     dispatch(getProductDetails(props.match.params.id));
   }, []);
 
+  const handleAddToCart = () => {
+    props.history.push(`/cart/${props.match.params.id}?qty=${qty}`);
+  };
+
   return (
     <Fragment>
       <div className="back-to-results">
@@ -48,7 +52,19 @@ const ProductPage = (props) => {
               <li>
                 Price: <strong>${product.price}</strong>
               </li>
-              <li>Status: {product.status}</li>
+              <li>
+                Status:{" "}
+                {product.qtyInStock > 0 ? (
+                  "In Stock"
+                ) : (
+                  <span>
+                    Out of Stock
+                    <span role="img" aria-label="sad cat emoji">
+                      😿
+                    </span>
+                  </span>
+                )}
+              </li>
               <li>
                 Qty:
                 <select
@@ -67,7 +83,11 @@ const ProductPage = (props) => {
                 </select>
               </li>
               <li>
-                <button className="button primary">Add to Cart</button>
+                {product.qtyInStock > 0 && (
+                  <button className="button primary" onClick={handleAddToCart}>
+                    Add to Cart
+                  </button>
+                )}
               </li>
             </ul>
           </div>
