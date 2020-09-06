@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../actions/cartActions";
+import { addToCart, removeFromCart } from "../actions/cartActions";
 import { Link } from "react-router-dom";
 
 const Cart = (props) => {
@@ -21,8 +21,11 @@ const Cart = (props) => {
   }, []);
 
   const handleRemoveFromCart = (productId) => {
-    // dispatch(removeFromCart(productId));
-    console.log(`removing ${productId}`);
+    dispatch(removeFromCart(productId));
+  };
+
+  const handleCheckOut = () => {
+    props.history.push("/signing?redirect=shipping");
   };
 
   return (
@@ -37,25 +40,34 @@ const Cart = (props) => {
             <div>Cart is empty</div>
           ) : (
             cartItems.map((item) => (
-              <li key={item.product}>
+              <li key={item.id}>
                 <div className="cart-image">
                   <img src={item.image} alt={item.name} />
                 </div>
                 <div className="cart-name">
                   <div>
-                    <Link to={`/products/${item.product}`}>{item.name}</Link>
+                    <Link to={`/products/${item.id}`}>{item.name}</Link>
                   </div>
                   <div>
                     Qty:
-                    <select name="qty" id="qty">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
+                    <select
+                      name="qty"
+                      id="qty"
+                      value={item.qty}
+                      onChange={(e) =>
+                        dispatch(addToCart(item.id, parseInt(e.target.value)))
+                      }
+                    >
+                      {[...Array(item.qtyInStock).keys()].map((index) => (
+                        <option key={index} value={index + 1}>
+                          {index + 1}
+                        </option>
+                      ))}
                     </select>
                     <button
                       type="button"
                       className="button"
-                      onClick={() => handleRemoveFromCart(item.product)}
+                      onClick={() => handleRemoveFromCart(item.id)}
                     >
                       Remove From Cart
                     </button>
@@ -77,7 +89,11 @@ const Cart = (props) => {
             0
           )}
         </h3>
-        <button className="button primary" disabled={cartItems.length === 0}>
+        <button
+          className="button primary full-width"
+          disabled={cartItems.length === 0}
+          onClick={handleCheckOut}
+        >
           Proceed to Checkout
         </button>
       </div>

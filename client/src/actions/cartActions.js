@@ -1,16 +1,14 @@
 import axios from "axios";
-import {
-  ADD_TO_CART_REQUEST,
-  ADD_TO_CART_FAILED,
-} from "../constants/cartConstants";
+import Cookie from "js-cookie";
+import { ADD_TO_CART, REMOVE_FROM_CART } from "../constants/cartConstants";
 
-const addToCart = (productId, qty) => async (dispatch) => {
+const addToCart = (productId, qty) => async (dispatch, getState) => {
   try {
     const { data } = await axios.get(`/api/products/${productId}`);
     dispatch({
-      type: ADD_TO_CART_REQUEST,
+      type: ADD_TO_CART,
       payload: {
-        product: data._id,
+        id: data._id,
         name: data.name,
         image: data.image,
         price: data.price,
@@ -18,9 +16,19 @@ const addToCart = (productId, qty) => async (dispatch) => {
         qty,
       },
     });
-  } catch (error) {
-    dispatch({ type: ADD_TO_CART_FAILED, payload: error.message });
-  }
+    const {
+      cart: { cartItems },
+    } = getState();
+    Cookie.set("cartItems", JSON.stringify(cartItems));
+  } catch (error) {}
 };
 
-export { addToCart };
+const removeFromCart = (productId) => (dispatch, getState) => {
+  dispatch({ type: REMOVE_FROM_CART, payload: productId });
+  const {
+    cart: { cartItems },
+  } = getState();
+  Cookie.set("cartItems", JSON.stringify(cartItems));
+};
+
+export { addToCart, removeFromCart };

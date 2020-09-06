@@ -4,6 +4,9 @@ import {
   productDetailsReducer,
 } from "./reducers/productReducers";
 import { cartReducer } from "./reducers/cartReducers";
+import Cookie from "js-cookie";
+
+const cartItems = Cookie.getJSON("cartItems") || [];
 
 const store = configureStore({
   reducer: {
@@ -11,6 +14,7 @@ const store = configureStore({
     productDetails: productDetailsReducer,
     cart: cartReducer,
   },
+  preloadedState: { cart: { cartItems } },
 });
 
 export default store;
