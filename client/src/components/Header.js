@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Header.css";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const users = useSelector((state) => state.users);
+  const { user } = users;
   return (
     <header className="header">
       <div className="brand">
@@ -17,7 +20,11 @@ const Header = () => {
       </div>
       <div className="header-links">
         <a href="cart.html">Cart</a>
-        <a href="login.html">Login</a>
+        {user ? (
+          <Link to="/profile">{user.name}</Link>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
       </div>
     </header>
   );
