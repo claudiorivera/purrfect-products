@@ -1,0 +1,28 @@
+/* Header */
+
+.header {
+  grid-area: header;
+  background-color: var(--oxford-blue);
+  color: var(--platinum);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.brand a {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--platinum);
+}
+
+.header-links a {
+  color: var(--platinum);
+  text-decoration: none;
+  padding: 0.5rem;
+}
+.header-links a:hover {
+  color: var(--orange-web);
+  text-decoration: none;
+}

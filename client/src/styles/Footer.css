@@ -1,0 +1,10 @@
+/* Footer */
+
+.footer {
+  grid-area: footer;
+  background-color: var(--oxford-blue);
+  color: var(--orange-web);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
