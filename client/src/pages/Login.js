@@ -1,16 +1,25 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { loginUser } from "../actions/userActions";
 import "../styles/Login.css";
 
 const Login = (props) => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+  const users = useSelector((state) => state.users);
+  const { loading, user, error } = users;
+
+  useEffect(() => {
+    if (user && user.name) {
+      props.history.push("/");
+    }
+  }, [user]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // dispatch(loginUser(email, password));
+    dispatch(loginUser(email, password));
   };
 
   return (
@@ -19,6 +28,10 @@ const Login = (props) => {
         <ul>
           <li>
             <h2>Login</h2>
+          </li>
+          <li>
+            {loading && <div>Loading...</div>}
+            {error && <div>{error}</div>}
           </li>
           <li>
             <label htmlFor="email">Email</label>
