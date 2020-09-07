@@ -9,13 +9,16 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submitting");
+    dispatch(loginUser(email, password));
   };
 
   return (
-    <div className="loginForm">
-      <form onSubmit={handleSubmit}>
-        <ul className="form-container">
+    <div className="form-container">
+      <form onSubmit={handleSubmit} className="login-form">
+        <ul>
+          <li>
+            <h2>Login</h2>
+          </li>
           <li>
             <label htmlFor="email">Email</label>
             <input
@@ -39,10 +42,9 @@ const Login = (props) => {
               Log In
             </button>
           </li>
-          <li>Need an account?</li>
           <li>
-            <Link to="/register" className="button full-width">
-              Register
+            <Link to="/register" className="full-width text-center">
+              Need an Account? Register Here
             </Link>
           </li>
         </ul>
