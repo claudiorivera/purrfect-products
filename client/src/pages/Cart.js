@@ -5,18 +5,16 @@ import { Link } from "react-router-dom";
 
 const Cart = (props) => {
   const cart = useSelector((state) => state.cart);
-
   const { cartItems } = cart;
-
   const productId = props.match.params.id;
   const dispatch = useDispatch();
-  const qty = props.location.search
+  const qtyInCart = props.location.search
     ? Number(props.location.search.split("=")[1])
     : 1;
 
   useEffect(() => {
     if (productId) {
-      dispatch(addToCart(productId, qty));
+      dispatch(addToCart(productId, qtyInCart));
     }
   }, []);
 
@@ -40,22 +38,22 @@ const Cart = (props) => {
             <div>Cart is empty</div>
           ) : (
             cartItems.map((item) => (
-              <li key={item.id}>
+              <li key={item._id}>
                 <div className="cart-image">
                   <img src={item.image} alt={item.name} />
                 </div>
                 <div className="cart-name">
                   <div>
-                    <Link to={`/products/${item.id}`}>{item.name}</Link>
+                    <Link to={`/products/${item._id}`}>{item.name}</Link>
                   </div>
                   <div>
                     Qty:
                     <select
-                      name="qty"
-                      id="qty"
-                      value={item.qty}
+                      name="qtyInCart"
+                      id="qtyInCart"
+                      value={item.qtyInCart}
                       onChange={(e) =>
-                        dispatch(addToCart(item.id, parseInt(e.target.value)))
+                        dispatch(addToCart(item._id, parseInt(e.target.value)))
                       }
                     >
                       {[...Array(item.qtyInStock).keys()].map((index) => (
@@ -67,7 +65,7 @@ const Cart = (props) => {
                     <button
                       type="button"
                       className="button"
-                      onClick={() => handleRemoveFromCart(item.id)}
+                      onClick={() => handleRemoveFromCart(item._id)}
                     >
                       Remove From Cart
                     </button>
@@ -82,10 +80,13 @@ const Cart = (props) => {
       <div className="cart-action">
         <h3>
           Subtotal (
-          {cartItems.reduce((prevItem, curItem) => prevItem + curItem.qty, 0)}{" "}
+          {cartItems.reduce(
+            (prevItem, curItem) => prevItem + curItem.qtyInCart,
+            0
+          )}{" "}
           items): $
           {cartItems.reduce(
-            (prevItem, curItem) => prevItem + curItem.price * curItem.qty,
+            (prevItem, curItem) => prevItem + curItem.price * curItem.qtyInCart,
             0
           )}
         </h3>
