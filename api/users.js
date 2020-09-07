@@ -8,7 +8,7 @@ router.post("/login", async (req, res) => {
   const user = await User.findOne({
     email: req.body.email,
     password: req.body.password,
-  });
+  }).exec();
   if (user) {
     const { _id, name, email, isAdmin } = user;
     res.send({
