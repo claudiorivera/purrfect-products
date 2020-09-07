@@ -49,6 +49,10 @@ button {
   width: 100%;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .products {
   display: flex;
   justify-content: center;
@@ -276,4 +280,35 @@ button {
   flex: 1 1;
   font-size: 2.5rem;
   text-align: right;
+}
+
+/* Login Form */
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.login-form ul {
+  display: flex;
+  flex-direction: column;
+  width: 32rem;
+  padding: 2rem;
+  border: 0.1rem var(--platinum) solid;
+  border-radius: 0.5rem;
+  list-style-type: none;
+}
+
+.login-form li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+input {
+  padding: 1rem;
+  border: 0.1rem var(--platinum) solid;
+  border-radius: 0.5rem;
 }
