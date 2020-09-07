@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllProducts } from "../actions/productActions";
+import "../styles/Home.css";
 
 const Home = (props) => {
   const productList = useSelector((state) => state.productList);

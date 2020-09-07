@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import "../styles/Login.css";
 
 const Login = (props) => {
   const dispatch = useDispatch();
@@ -9,7 +10,7 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(loginUser(email, password));
+    // dispatch(loginUser(email, password));
   };
 
   return (
