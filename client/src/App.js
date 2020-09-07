@@ -19,7 +19,7 @@ function App() {
             >
               &#9776;
             </button>
-            <Link to="/">Purr-fect Products!</Link>
+            <Link to="/">Purrfect Products!</Link>
           </div>
           <div className="header-links">
             <a href="cart.html">Cart</a>
