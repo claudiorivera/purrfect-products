@@ -1,7 +1,27 @@
 import express from "express";
 import User from "../models/User";
+import { getToken } from "../util";
 
 const router = express.Router();
+
+router.post("/login", async (req, res) => {
+  const user = await User.findOne({
+    email: req.body.email,
+    password: req.body.password,
+  });
+  if (user) {
+    const { _id, name, email, isAdmin } = user;
+    res.send({
+      _id,
+      name,
+      email,
+      isAdmin,
+      token: getToken(user),
+    });
+  } else {
+    res.status(401).send({ message: "Invalid email or password" });
+  }
+});
 
 router.get("/createAdmin", async (req, res) => {
   try {
