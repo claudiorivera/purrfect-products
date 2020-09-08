@@ -6,20 +6,20 @@ const cartItems = Cookie.getJSON("cartItems") || [];
 
 export const updateCart = createAsyncThunk(
   "cart/updateCartStatus",
-  async (idAndQty, { getState, requestId }) => {
-    console.log(`id: ${idAndQty.id}, qty: ${idAndQty.qty}`);
+  async (args, { getState, requestId }) => {
+    console.log(`id: ${args.id}, qty: ${args.qty}`);
     const { currentRequestId, loading } = getState().cart;
     if (loading !== "pending" || requestId !== currentRequestId) {
       return;
     }
-    const response = await axios.get(`/api/products/${idAndQty.id}`);
+    const response = await axios.get(`/api/products/${args.id}`);
     return {
       _id: response.data._id,
       name: response.data.name,
       image: response.data.image,
       price: response.data.price,
       qtyInStock: response.data.qtyInStock,
-      qtyInCart: idAndQty.qty,
+      qtyInCart: args.qty,
     };
   }
 );
