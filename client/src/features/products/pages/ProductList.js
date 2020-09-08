@@ -11,8 +11,7 @@ const ProductList = () => {
 
   useEffect(() => {
     dispatch(fetchAllProducts());
-    // eslint-disable-next-line
-  }, []);
+  }, [dispatch]);
 
   return loading === "pending" ? (
     <div>Loading...</div>

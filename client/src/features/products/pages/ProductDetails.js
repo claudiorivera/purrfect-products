@@ -12,8 +12,7 @@ const ProductDetails = (props) => {
 
   useEffect(() => {
     dispatch(fetchProductById(props.match.params.id));
-    // eslint-disable-next-line
-  }, []);
+  }, [dispatch, props.match.params.id]);
 
   const handleAddToCart = () => {
     props.history.push(`/cart/${props.match.params.id}?qty=${qty}`);

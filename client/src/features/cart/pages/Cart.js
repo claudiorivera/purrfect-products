@@ -15,8 +15,7 @@ const Cart = (props) => {
     if (productId) {
       dispatch(updateCart({ id: productId, qty: qtyInCart }));
     }
-    // eslint-disable-next-line
-  }, []);
+  }, [productId, qtyInCart, dispatch]);
 
   const handleRemoveFromCart = (productId) => {
     dispatch(removeFromCart(productId));
