@@ -2,7 +2,7 @@ import "./App.css";
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Product from "./pages/Product";
+import ProductPage from "./features/products/ProductPage";
 import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import Sidebar from "./components/Sidebar";
@@ -18,7 +18,7 @@ const App = () => {
         <main className="main">
           <div className="content">
             <Route path="/login" component={Login} />
-            <Route path="/products/:id" component={Product} />
+            <Route path="/products/:id" component={ProductPage} />
             <Route path="/cart/:id?" component={Cart} />
             <Route path="/" component={Home} exact />
           </div>

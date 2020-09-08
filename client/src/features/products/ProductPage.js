@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchProductById } from "../features/products/productDetailsSlice";
-import "../styles/Product.css";
+import { fetchProductById } from "./productDetailsSlice";
+import "./Product.css";
 
 const Product = (props) => {
   const [qty, setQty] = useState(1);
