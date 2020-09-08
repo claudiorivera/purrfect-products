@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getProductDetails } from "../actions/productActions";
+import { fetchProductById } from "../features/products/productDetailsSlice";
 import "../styles/Product.css";
 
 const Product = (props) => {
@@ -11,7 +11,7 @@ const Product = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProductDetails(props.match.params.id));
+    dispatch(fetchProductById(props.match.params.id));
     // eslint-disable-next-line
   }, []);
 
@@ -24,10 +24,10 @@ const Product = (props) => {
       <div className="back-to-results">
         <Link to="/">Back to results</Link>
       </div>
-      {loading ? (
+      {loading === "pending" ? (
         <div>Loading...</div>
       ) : error ? (
-        <div>{error}</div>
+        <div>{error.message}</div>
       ) : (
         <div className="details">
           <div className="details-image">

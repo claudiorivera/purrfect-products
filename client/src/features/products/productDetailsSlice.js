@@ -1,43 +1,43 @@
 import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const fetchAllProducts = createAsyncThunk(
-  "productList/fetchAllProductsStatus",
-  async (_, { getState, requestId }) => {
-    const { currentRequestId, loading } = getState().productList;
+export const fetchProductById = createAsyncThunk(
+  "productDetails/fetchProductByIdStatus",
+  async (id, { getState, requestId }) => {
+    const { currentRequestId, loading } = getState().productDetails;
     if (loading !== "pending" || requestId !== currentRequestId) {
       return;
     }
-    const response = await axios.get("/api/products");
+    const response = await axios.get(`/api/products/${id}`);
     return response.data;
   }
 );
 
-const productsSlice = createSlice({
-  name: "productList",
+const productDetailsSlice = createSlice({
+  name: "productDetails",
   initialState: {
-    products: [],
+    product: {},
     loading: "idle",
     currentRequestId: undefined,
     error: null,
   },
   reducers: {},
   extraReducers: {
-    [fetchAllProducts.pending]: (state, action) => {
+    [fetchProductById.pending]: (state, action) => {
       if (state.loading === "idle") {
         state.loading = "pending";
         state.currentRequestId = action.meta.requestId;
       }
     },
-    [fetchAllProducts.fulfilled]: (state, action) => {
+    [fetchProductById.fulfilled]: (state, action) => {
       const { requestId } = action.meta;
       if (state.loading === "pending" && state.currentRequestId === requestId) {
         state.loading = "idle";
-        state.products = action.payload;
+        state.product = action.payload;
         state.currentRequestId = undefined;
       }
     },
-    [fetchAllProducts.rejected]: (state, action) => {
+    [fetchProductById.rejected]: (state, action) => {
       const { requestId } = action.meta;
       if (state.loading === "pending" && state.currentRequestId === requestId) {
         state.loading = "idle";
@@ -48,5 +48,5 @@ const productsSlice = createSlice({
   },
 });
 
-const { reducer } = productsSlice;
+const { reducer } = productDetailsSlice;
 export default reducer;
