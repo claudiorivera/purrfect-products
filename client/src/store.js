@@ -1,11 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import {
-  productListReducer,
-  productDetailsReducer,
-} from "./reducers/productReducers";
+import { productDetailsReducer } from "./reducers/productReducers";
 import { cartReducer } from "./reducers/cartReducers";
 import { userAuthReducer } from "./reducers/userReducers";
 import Cookie from "js-cookie";
+import productListReducer from "./features/products/productsSlice";
 
 const cartItems = Cookie.getJSON("cartItems") || [];
 const user = Cookie.getJSON("user") || null;

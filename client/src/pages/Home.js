@@ -1,23 +1,23 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { getAllProducts } from "../actions/productActions";
+import { fetchAllProducts } from "../features/products/productsSlice";
 import "../styles/Home.css";
 
-const Home = (props) => {
+const Home = () => {
   const productList = useSelector((state) => state.productList);
   const { products, loading, error } = productList;
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllProducts());
+    dispatch(fetchAllProducts());
     // eslint-disable-next-line
   }, []);
 
-  return loading ? (
+  return loading === "pending" ? (
     <div>Loading...</div>
   ) : error ? (
-    <div>{error}</div>
+    <div>{error.message}</div>
   ) : (
     <ul className="products">
       {products.map((product) => (
