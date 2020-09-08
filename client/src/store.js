@@ -4,22 +4,23 @@ import {
   productDetailsReducer,
 } from "./reducers/productReducers";
 import { cartReducer } from "./reducers/cartReducers";
-import { userReducer } from "./reducers/userReducers";
+import { userAuthReducer } from "./reducers/userReducers";
 import Cookie from "js-cookie";
 
 const cartItems = Cookie.getJSON("cartItems") || [];
-const user = Cookie.getJSON("user") || {};
+const user = Cookie.getJSON("user") || null;
+const isLoggedIn = user ? true : false;
 
 const store = configureStore({
   reducer: {
     productList: productListReducer,
     productDetails: productDetailsReducer,
     cart: cartReducer,
-    userAuth: userReducer,
+    userAuth: userAuthReducer,
   },
   preloadedState: {
     cart: { cartItems },
-    userAuth: { user, loading: false },
+    userAuth: { user, isLoggedIn, loading: false },
   },
 });
 

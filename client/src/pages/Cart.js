@@ -9,9 +9,7 @@ const Cart = (props) => {
   const { cartItems } = cart;
   const productId = props.match.params.id;
   const dispatch = useDispatch();
-  const qtyInCart = props.location.search
-    ? Number(props.location.search.split("=")[1])
-    : 1;
+  const qtyInCart = parseInt(props.location.search.split("=")[1]);
 
   useEffect(() => {
     if (productId) {

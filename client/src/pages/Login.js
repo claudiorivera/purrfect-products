@@ -9,13 +9,13 @@ const Login = (props) => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const userAuth = useSelector((state) => state.userAuth);
-  const { loading, user, error } = userAuth;
+  const { loading, error, isLoggedIn } = userAuth;
 
   useEffect(() => {
-    if (user && user.name) {
+    if (isLoggedIn) {
       props.history.push("/");
     }
-  }, [user, props.history]);
+  }, [isLoggedIn, props.history]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

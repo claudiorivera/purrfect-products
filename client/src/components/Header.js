@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   const userAuth = useSelector((state) => state.userAuth);
-  const { user } = userAuth;
+  const { user, isLoggedIn } = userAuth;
   return (
     <header className="header">
       <div className="brand">
@@ -20,7 +20,7 @@ const Header = () => {
       </div>
       <div className="header-links">
         <a href="cart.html">Cart</a>
-        {user.name ? (
+        {isLoggedIn ? (
           <Link to="/profile">{user.name}</Link>
         ) : (
           <Link to="/login">Login</Link>
