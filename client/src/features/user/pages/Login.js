@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { login } from "../userActions";
+import { login } from "../userSlice";
 import "./Login.css";
 
 const Login = (props) => {
@@ -19,7 +19,7 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login(email, password));
+    dispatch(login({ email, password }));
   };
 
   return (
@@ -30,8 +30,8 @@ const Login = (props) => {
             <h2>Login</h2>
           </li>
           <li>
-            {loading && <div>Loading...</div>}
-            {error && <div>{error}</div>}
+            {loading === "pending" && <div>Loading...</div>}
+            {error && <div>{error.message}</div>}
           </li>
           <li>
             <label htmlFor="email">Email</label>

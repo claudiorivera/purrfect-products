@@ -2,7 +2,8 @@ import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import Cookie from "js-cookie";
 
-const user = Cookie.getJSON("user") || {};
+const user = Cookie.getJSON("user") || null;
+const isLoggedIn = user ? true : false;
 
 export const login = createAsyncThunk(
   "userAuth/loginStatus",
@@ -25,7 +26,7 @@ const cartSlice = createSlice({
     user,
     loading: "idle",
     currentRequestId: undefined,
-    isLoggedIn: false,
+    isLoggedIn,
     error: null,
   },
   reducers: {},
