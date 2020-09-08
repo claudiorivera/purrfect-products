@@ -7,7 +7,6 @@ const cartItems = Cookie.getJSON("cartItems") || [];
 export const updateCart = createAsyncThunk(
   "cart/updateCartStatus",
   async (args, { getState, requestId }) => {
-    console.log(`id: ${args.id}, qty: ${args.qty}`);
     const { currentRequestId, loading } = getState().cart;
     if (loading !== "pending" || requestId !== currentRequestId) {
       return;
