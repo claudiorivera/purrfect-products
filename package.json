@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node server",
     "client-install": "yarn --cwd client",
-    "dev-server": "nodemon --exec babel-node server.js",
+    "dev-server": "nodemon --ignore client --exec babel-node server.js",
     "dev-server-start": "DEBUG=game-night-server:* yarn run dev-server",
     "client-start": "yarn --cwd client start",
     "dev": "concurrently --names 'SERVER,CLIENT' -c 'bgBlue.bold,bgMagenta.bold' 'yarn run dev-server-start' 'yarn run client-start'"
