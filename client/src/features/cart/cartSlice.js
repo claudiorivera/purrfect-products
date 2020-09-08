@@ -12,13 +12,13 @@ export const updateCart = createAsyncThunk(
     if (loading !== "pending" || requestId !== currentRequestId) {
       return;
     }
-    const response = await axios.get(`/api/products/${args.id}`);
+    const { data } = await axios.get(`/api/products/${args.id}`);
     return {
-      _id: response.data._id,
-      name: response.data.name,
-      image: response.data.image,
-      price: response.data.price,
-      qtyInStock: response.data.qtyInStock,
+      _id: data._id,
+      name: data.name,
+      image: data.image,
+      price: data.price,
+      qtyInStock: data.qtyInStock,
       qtyInCart: args.qty,
     };
   }
