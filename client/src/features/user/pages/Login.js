@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { login } from "../actions/userActions";
-import "../styles/Login.css";
+import { login } from "../userActions";
+import "./Login.css";
 
 const Login = (props) => {
   const dispatch = useDispatch();

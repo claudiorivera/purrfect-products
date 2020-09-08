@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchAllProducts } from "../features/products/productsSlice";
-import "../styles/Home.css";
+import { fetchAllProducts } from "../productsSlice";
+import "./ProductList.css";
 
-const Home = () => {
+const ProductList = () => {
   const productList = useSelector((state) => state.productList);
   const { products, loading, error } = productList;
   const dispatch = useDispatch();
@@ -43,4 +43,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default ProductList;

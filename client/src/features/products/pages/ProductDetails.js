@@ -1,10 +1,10 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchProductById } from "./productDetailsSlice";
-import "./Product.css";
+import { fetchProductById } from "../productDetailsSlice";
+import "./ProductDetails.css";
 
-const Product = (props) => {
+const ProductDetails = (props) => {
   const [qty, setQty] = useState(1);
   const productDetails = useSelector((state) => state.productDetails);
   const { product, loading, error } = productDetails;
@@ -99,4 +99,4 @@ const Product = (props) => {
   );
 };
 
-export default Product;
+export default ProductDetails;
