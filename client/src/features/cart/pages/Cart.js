@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, removeFromCart } from "../cartActions";
+import { updateCart, removeFromCart } from "../cartActions";
 import { Link } from "react-router-dom";
 import "./Cart.css";
 
@@ -13,7 +13,7 @@ const Cart = (props) => {
 
   useEffect(() => {
     if (productId) {
-      dispatch(addToCart(productId, qtyInCart));
+      dispatch(updateCart(productId, qtyInCart));
     }
     // eslint-disable-next-line
   }, []);
@@ -53,7 +53,7 @@ const Cart = (props) => {
                       id="qtyInCart"
                       value={item.qtyInCart}
                       onChange={(e) =>
-                        dispatch(addToCart(item._id, parseInt(e.target.value)))
+                        dispatch(updateCart(item._id, parseInt(e.target.value)))
                       }
                     >
                       {[...Array(item.qtyInStock).keys()].map((index) => (
