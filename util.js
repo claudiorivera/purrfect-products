@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-const getToken = (user) => {
+module.exports = (user) => {
   const { _id, name, email, isAdmin } = user;
   jwt.sign(
     {
@@ -15,5 +15,3 @@ const getToken = (user) => {
     }
   );
 };
-
-export { getToken };
