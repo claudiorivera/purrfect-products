@@ -4,8 +4,8 @@ import "../styles/Header.css";
 import { useSelector } from "react-redux";
 
 const Header = () => {
-  const users = useSelector((state) => state.users);
-  const { user } = users;
+  const userAuth = useSelector((state) => state.userAuth);
+  const { user } = userAuth;
   return (
     <header className="header">
       <div className="brand">
@@ -20,7 +20,7 @@ const Header = () => {
       </div>
       <div className="header-links">
         <a href="cart.html">Cart</a>
-        {user ? (
+        {user.name ? (
           <Link to="/profile">{user.name}</Link>
         ) : (
           <Link to="/login">Login</Link>

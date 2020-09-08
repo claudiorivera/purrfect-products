@@ -11,6 +11,7 @@ const Home = (props) => {
 
   useEffect(() => {
     dispatch(getAllProducts());
+    // eslint-disable-next-line
   }, []);
 
   return loading ? (

@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookie from "js-cookie";
 
-const loginUser = (email, password) => async (dispatch) => {
+const login = (email, password) => async (dispatch) => {
   dispatch({ type: "LOGIN_USER_REQUEST", payload: { email, password } });
   try {
     const { data } = await axios.post("/api/users/login", { email, password });
@@ -12,4 +12,4 @@ const loginUser = (email, password) => async (dispatch) => {
   }
 };
 
-export { loginUser };
+export { login };

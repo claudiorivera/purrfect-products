@@ -1,6 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 
-const usersReducer = createReducer(
+const userReducer = createReducer(
   {
     user: {},
     loading: false,
@@ -20,4 +20,4 @@ const usersReducer = createReducer(
   }
 );
 
-export { usersReducer };
+export { userReducer };

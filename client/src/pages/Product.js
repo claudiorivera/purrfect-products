@@ -12,6 +12,7 @@ const Product = (props) => {
 
   useEffect(() => {
     dispatch(getProductDetails(props.match.params.id));
+    // eslint-disable-next-line
   }, []);
 
   const handleAddToCart = () => {

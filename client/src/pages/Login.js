@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { loginUser } from "../actions/userActions";
+import { login } from "../actions/userActions";
 import "../styles/Login.css";
 
 const Login = (props) => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  const users = useSelector((state) => state.users);
-  const { loading, user, error } = users;
+  const userAuth = useSelector((state) => state.userAuth);
+  const { loading, user, error } = userAuth;
 
   useEffect(() => {
     if (user && user.name) {
       props.history.push("/");
     }
-  }, [user]);
+  }, [user, props.history]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(loginUser(email, password));
+    dispatch(login(email, password));
   };
 
   return (
