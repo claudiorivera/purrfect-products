@@ -19,7 +19,7 @@ const Header = () => {
         <Link to="/">Purrfect Products!</Link>
       </div>
       <div className="header-links">
-        <a href="cart.html">Cart</a>
+        <Link to="/cart">Cart</Link>
         {isLoggedIn ? (
           <Link to="/profile">{user.name}</Link>
         ) : (
