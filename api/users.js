@@ -23,6 +23,29 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.post("/register", async (req, res) => {
+  const user = new User({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+  });
+
+  const newUser = await user.save();
+  const { _id, name, email, isAdmin } = newUser;
+
+  if (newUser) {
+    res.send({
+      _id,
+      name,
+      email,
+      isAdmin,
+      token: getToken(newUser),
+    });
+  } else {
+    res.status(401).send({ message: "Unable to register. Please try again." });
+  }
+});
+
 router.get("/createAdmin", async (req, res) => {
   try {
     const user = new User({
