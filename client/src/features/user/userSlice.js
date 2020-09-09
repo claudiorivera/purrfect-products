@@ -6,22 +6,41 @@ const user = Cookie.getJSON("user") || null;
 const isLoggedIn = user ? true : false;
 
 export const login = createAsyncThunk(
-  "userAuth/loginStatus",
+  "auth/loginStatus",
   async (args, { getState, requestId }) => {
-    const { currentRequestId, loading } = getState().userAuth;
+    const { currentRequestId, loading } = getState().auth;
+    const { email, password } = args;
     if (loading !== "pending" || requestId !== currentRequestId) {
       return;
     }
     const { data } = await axios.post("/api/users/login", {
-      email: args.email,
-      password: args.password,
+      email,
+      password,
     });
     return data;
   }
 );
 
-const cartSlice = createSlice({
-  name: "userAuth",
+export const register = createAsyncThunk(
+  "auth/registerStatus",
+  async (args, { getState, requestId }) => {
+    const { currentRequestId, loading } = getState().auth;
+    const { name, email, password, confirmPassword } = args;
+    if (loading !== "pending" || requestId !== currentRequestId) {
+      return;
+    }
+    const { data } = await axios.post("/api/users/register", {
+      name,
+      email,
+      password,
+      confirmPassword,
+    });
+    return data;
+  }
+);
+
+const userSlice = createSlice({
+  name: "auth",
   initialState: {
     user,
     loading: "idle",
@@ -56,8 +75,33 @@ const cartSlice = createSlice({
         state.currentRequestId = undefined;
       }
     },
+    [register.pending]: (state, action) => {
+      if (state.loading === "idle") {
+        state.loading = "pending";
+        state.currentRequestId = action.meta.requestId;
+      }
+    },
+    [register.fulfilled]: (state, action) => {
+      const { requestId } = action.meta;
+      if (state.loading === "pending" && state.currentRequestId === requestId) {
+        state.loading = "idle";
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        Cookie.set("user", JSON.stringify(state.user));
+        state.currentRequestId = undefined;
+      }
+    },
+    [register.rejected]: (state, action) => {
+      const { requestId } = action.meta;
+      if (state.loading === "pending" && state.currentRequestId === requestId) {
+        state.loading = "idle";
+        state.isLoggedIn = false;
+        state.error = action.error;
+        state.currentRequestId = undefined;
+      }
+    },
   },
 });
 
-const { reducer } = cartSlice;
+const { reducer } = userSlice;
 export default reducer;
