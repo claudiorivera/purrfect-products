@@ -8,8 +8,8 @@ const Login = (props) => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  const userAuth = useSelector((state) => state.userAuth);
-  const { loading, error, isLoggedIn } = userAuth;
+  const auth = useSelector((state) => state.auth);
+  const { loading, error, isLoggedIn } = auth;
 
   useEffect(() => {
     if (isLoggedIn) {

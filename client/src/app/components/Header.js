@@ -4,8 +4,8 @@ import "./Header.css";
 import { useSelector } from "react-redux";
 
 const Header = () => {
-  const userAuth = useSelector((state) => state.userAuth);
-  const { user, isLoggedIn } = userAuth;
+  const auth = useSelector((state) => state.auth);
+  const { user, isLoggedIn } = auth;
   return (
     <header className="header">
       <div className="brand">
