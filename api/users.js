@@ -1,6 +1,6 @@
 import express from "express";
 import User from "../models/User";
-import getToken from "../util";
+import { getToken } from "../util";
 
 const router = express.Router();
 
@@ -34,7 +34,7 @@ router.post("/register", async (req, res) => {
   const { _id, name, email, isAdmin } = newUser;
 
   if (newUser) {
-    res.send({
+    res.status(201).send({
       _id,
       name,
       email,
@@ -42,7 +42,7 @@ router.post("/register", async (req, res) => {
       token: getToken(newUser),
     });
   } else {
-    res.status(401).send({ message: "Unable to register. Please try again." });
+    res.status(500).send({ message: "Unable to register. Please try again." });
   }
 });
 
@@ -56,7 +56,7 @@ router.get("/createAdmin", async (req, res) => {
     });
 
     const newUser = await user.save();
-    res.send(newUser);
+    res.status(201).send(newUser);
   } catch (error) {
     res.status(500).send({ message: error.message });
   }
