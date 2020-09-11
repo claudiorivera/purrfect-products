@@ -13,6 +13,44 @@ export const fetchAllProducts = createAsyncThunk(
   }
 );
 
+export const addProduct = createAsyncThunk(
+  "productList/addProductStatus",
+  async (args, { getState, requestId }) => {
+    const { currentRequestId, loading } = getState().productList;
+    const { user } = getState().auth;
+    const {
+      name,
+      image,
+      brand,
+      category,
+      description,
+      qtyInStock,
+      price,
+    } = args;
+    if (loading !== "pending" || requestId !== currentRequestId) {
+      return;
+    }
+    const { data } = await axios.post(
+      "/api/products",
+      {
+        name,
+        image,
+        brand,
+        category,
+        description,
+        qtyInStock,
+        price,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
+    return data;
+  }
+);
+
 const productsSlice = createSlice({
   name: "productList",
   initialState: {
@@ -38,6 +76,28 @@ const productsSlice = createSlice({
       }
     },
     [fetchAllProducts.rejected]: (state, action) => {
+      const { requestId } = action.meta;
+      if (state.loading === "pending" && state.currentRequestId === requestId) {
+        state.loading = "idle";
+        state.error = action.error;
+        state.currentRequestId = undefined;
+      }
+    },
+    [addProduct.pending]: (state, action) => {
+      if (state.loading === "idle") {
+        state.loading = "pending";
+        state.currentRequestId = action.meta.requestId;
+      }
+    },
+    [addProduct.fulfilled]: (state, action) => {
+      const { requestId } = action.meta;
+      if (state.loading === "pending" && state.currentRequestId === requestId) {
+        state.loading = "idle";
+        state.products = [...state.products, action.payload];
+        state.currentRequestId = undefined;
+      }
+    },
+    [addProduct.rejected]: (state, action) => {
       const { requestId } = action.meta;
       if (state.loading === "pending" && state.currentRequestId === requestId) {
         state.loading = "idle";
