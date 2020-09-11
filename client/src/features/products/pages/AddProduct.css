@@ -1,0 +1,30 @@
+/* Add Product Form */
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.add-product-form ul {
+  display: flex;
+  flex-direction: column;
+  width: 32rem;
+  padding: 2rem;
+  border: 0.1rem var(--platinum) solid;
+  border-radius: 0.5rem;
+  list-style-type: none;
+}
+
+.add-product-form li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+input {
+  padding: 1rem;
+  border: 0.1rem var(--platinum) solid;
+  border-radius: 0.5rem;
+}

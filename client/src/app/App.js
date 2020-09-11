@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import ProductList from "../features/products/pages/ProductList";
 import ProductDetails from "../features/products/pages/ProductDetails";
+import AddProduct from "../features/products/pages/AddProduct";
 import Cart from "../features/cart/pages/Cart";
 import Login from "../features/user/pages/Login";
 import Register from "../features/user/pages/Register";
@@ -20,6 +21,7 @@ const App = () => {
           <div className="content">
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <Route exact path="/products" component={AddProduct} />
             <Route path="/products/:id" component={ProductDetails} />
             <Route path="/cart/:id?" component={Cart} />
             <Route path="/" component={ProductList} exact />
