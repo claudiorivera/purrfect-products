@@ -13,7 +13,7 @@ export const fetchAllProducts = createAsyncThunk(
   }
 );
 
-export const addProduct = createAsyncThunk(
+export const saveProduct = createAsyncThunk(
   "productList/addProductStatus",
   async (args, { getState, requestId }) => {
     const { currentRequestId, loading } = getState().productList;
@@ -83,13 +83,13 @@ const productsSlice = createSlice({
         state.currentRequestId = undefined;
       }
     },
-    [addProduct.pending]: (state, action) => {
+    [saveProduct.pending]: (state, action) => {
       if (state.loading === "idle") {
         state.loading = "pending";
         state.currentRequestId = action.meta.requestId;
       }
     },
-    [addProduct.fulfilled]: (state, action) => {
+    [saveProduct.fulfilled]: (state, action) => {
       const { requestId } = action.meta;
       if (state.loading === "pending" && state.currentRequestId === requestId) {
         state.loading = "idle";
@@ -97,7 +97,7 @@ const productsSlice = createSlice({
         state.currentRequestId = undefined;
       }
     },
-    [addProduct.rejected]: (state, action) => {
+    [saveProduct.rejected]: (state, action) => {
       const { requestId } = action.meta;
       if (state.loading === "pending" && state.currentRequestId === requestId) {
         state.loading = "idle";
