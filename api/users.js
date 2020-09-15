@@ -5,11 +5,11 @@ import { getToken } from "../util";
 const router = express.Router();
 
 router.post("/login", async (req, res) => {
-  const user = await User.findOne({
-    email: req.body.email,
-    password: req.body.password,
-  }).exec();
-  if (user) {
+  try {
+    const user = await User.findOne({
+      email: req.body.email,
+      password: req.body.password,
+    });
     const { _id, name, email, isAdmin } = user;
     res.send({
       _id,
@@ -18,45 +18,45 @@ router.post("/login", async (req, res) => {
       isAdmin,
       token: getToken(user),
     });
-  } else {
+  } catch (error) {
     res.status(401).send({ message: "Invalid email or password" });
   }
 });
 
 router.post("/register", async (req, res) => {
-  const user = new User({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-  });
+  try {
+    const userToSave = new User({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    });
 
-  const newUser = await user.save();
-  const { _id, name, email, isAdmin } = newUser;
+    const savedUser = await userToSave.save();
+    const { _id, name, email, isAdmin } = savedUser;
 
-  if (newUser) {
     res.status(201).send({
       _id,
       name,
       email,
       isAdmin,
-      token: getToken(newUser),
+      token: getToken(savedUser),
     });
-  } else {
+  } catch (error) {
     res.status(500).send({ message: "Unable to register. Please try again." });
   }
 });
 
 router.get("/createAdmin", async (req, res) => {
   try {
-    const user = new User({
+    const userToSave = new User({
       name: "Claudio Rivera",
       email: "me@claudiorivera.com",
       password: "1",
       isAdmin: true,
     });
 
-    const newUser = await user.save();
-    res.status(201).send(newUser);
+    const savedUser = await userToSave.save();
+    res.status(201).send(savedUser);
   } catch (error) {
     res.status(500).send({ message: error.message });
   }

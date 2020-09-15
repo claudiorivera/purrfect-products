@@ -1,47 +1,91 @@
 import express from "express";
 import Product from "../models/Product";
-import getToken from "../util";
 
 const router = express.Router();
 
+// GET all products
 router.get("/", async (req, res) => {
-  const products = await Product.find({});
-  res.send(products);
+  try {
+    const products = await Product.find({});
+    res.send(products);
+  } catch (error) {
+    res.status(500).send({ message: "Server error. Please try again." });
+  }
 });
 
+// POST new product
 router.post("/", async (req, res) => {
-  const {
-    name,
-    image,
-    brand,
-    category,
-    description,
-    qtyInStock,
-    price,
-  } = req.body;
-  const product = new Product({
-    name,
-    image,
-    brand,
-    category,
-    description,
-    qtyInStock,
-    price,
-  });
+  try {
+    const {
+      name,
+      image,
+      brand,
+      category,
+      description,
+      qtyInStock,
+      price,
+    } = req.body;
+    const productToSave = new Product({
+      name,
+      image,
+      brand,
+      category,
+      description,
+      qtyInStock,
+      price,
+    });
 
-  const newProduct = await product.save();
-
-  if (newProduct) {
-    res.status(201).send(newProduct);
-  } else {
+    const savedProduct = await productToSave.save();
+    res.status(201).send(savedProduct);
+  } catch (error) {
     res
       .status(500)
       .send({ message: "Unable to add product. Please try again." });
   }
 });
 
-router.get("/:id", async (req, res) => {
-  // TODO
+// PUT existing product
+router.put("/:_id", async (req, res) => {
+  try {
+    const { _id } = req.params;
+    const {
+      name,
+      image,
+      brand,
+      category,
+      description,
+      qtyInStock,
+      price,
+    } = req.body;
+
+    const product = Product.findOne({ _id });
+
+    product.name = name;
+    product.image = image;
+    product.brand = brand;
+    product.category = category;
+    product.description = description;
+    product.qtyInStock = qtyInStock;
+    product.price = price;
+
+    const savedProduct = await product.save();
+    res.status(201).send(savedProduct);
+  } catch (error) {
+    res
+      .status(500)
+      .send({ message: "Unable to update product. Please try again." });
+  }
+});
+
+// GET product
+router.get("/:_id", async (req, res) => {
+  try {
+    const { _id } = req.params;
+    const product = await Product.findOne({ _id });
+    res.send(product);
+  } catch (error) {
+    res.status(400).send({ message: "Product not found. Please try again." });
+  }
 });
 
 module.exports = router;
