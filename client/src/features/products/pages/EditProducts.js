@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { saveProduct, fetchAllProducts } from "../productsSlice";
+import { saveProduct, fetchAllProducts, deleteProduct } from "../productsSlice";
 import "./EditProducts.css";
 
 const EditProducts = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [id, setId] = useState(null);
+  const [_id, setId] = useState(null);
   const [name, setName] = useState(null);
   const [image, setImage] = useState(null);
   const [brand, setBrand] = useState(null);
@@ -38,7 +38,7 @@ const EditProducts = (props) => {
     e.preventDefault();
     dispatch(
       saveProduct({
-        _id: id,
+        _id,
         name,
         image,
         brand,
@@ -48,6 +48,11 @@ const EditProducts = (props) => {
         price,
       })
     );
+    props.history.push("/");
+  };
+
+  const handleDelete = (_id) => {
+    dispatch(deleteProduct(_id));
     props.history.push("/");
   };
 
@@ -153,7 +158,7 @@ const EditProducts = (props) => {
               </li>
               <li>
                 <button type="submit" className="button primary">
-                  {id ? "Update" : "Add"}
+                  {_id ? "Update" : "Add"}
                 </button>
                 <button
                   type="button"
@@ -197,7 +202,13 @@ const EditProducts = (props) => {
                   >
                     Edit
                   </button>
-                  <button>Delete</button>
+                  <button
+                    onClick={() => {
+                      handleDelete(product._id);
+                    }}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}

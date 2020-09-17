@@ -4,7 +4,7 @@ import Product from "../models/Product";
 const router = express.Router();
 
 // GET all products
-router.get("/", async (req, res) => {
+router.get("/", async (_, res) => {
   try {
     const products = await Product.find({});
     res.send(products);
@@ -34,7 +34,6 @@ router.post("/", async (req, res) => {
       qtyInStock,
       price,
     });
-
     const savedProduct = await productToSave.save();
     res.status(201).send(savedProduct);
   } catch (error) {
@@ -57,9 +56,7 @@ router.put("/:_id", async (req, res) => {
       qtyInStock,
       price,
     } = req.body;
-
-    const product = Product.findOne({ _id });
-
+    const product = await Product.findOne({ _id });
     product.name = name;
     product.image = image;
     product.brand = brand;
@@ -67,9 +64,21 @@ router.put("/:_id", async (req, res) => {
     product.description = description;
     product.qtyInStock = qtyInStock;
     product.price = price;
-
     const savedProduct = await product.save();
-    res.status(201).send(savedProduct);
+    res.status(200).send(savedProduct);
+  } catch (error) {
+    res
+      .status(500)
+      .send({ message: "Unable to update product. Please try again." });
+  }
+});
+
+// DELETE existing product
+router.delete("/:_id", async (req, res) => {
+  try {
+    const { _id } = req.params;
+    const product = await Product.findOneAndDelete({ _id });
+    res.status(200).send(product);
   } catch (error) {
     res
       .status(500)

@@ -14,39 +14,47 @@ export const fetchAllProducts = createAsyncThunk(
 );
 
 export const saveProduct = createAsyncThunk(
-  "productList/addProductStatus",
+  "productList/saveProductStatus",
   async (args, { getState, requestId }) => {
     const { currentRequestId, loading } = getState().productList;
     const { user } = getState().auth;
-    const {
-      name,
-      image,
-      brand,
-      category,
-      description,
-      qtyInStock,
-      price,
-    } = args;
+
     if (loading !== "pending" || requestId !== currentRequestId) {
       return;
     }
-    const { data } = await axios.post(
-      "/api/products",
-      {
-        name,
-        image,
-        brand,
-        category,
-        description,
-        qtyInStock,
-        price,
-      },
-      {
+    // TODO: Refactor this
+    if (args._id) {
+      const { data } = await axios.put(`/api/products/${args._id}`, args, {
         headers: {
-          Authorization: `Bearer ${user.token}`,
+          Authorization: `Bearer ${user?.token || ""}`,
         },
-      }
-    );
+      });
+      return data;
+    } else {
+      const { data } = await axios.post("/api/products", args, {
+        headers: {
+          Authorization: `Bearer ${user?.token || ""}`,
+        },
+      });
+      return data;
+    }
+  }
+);
+
+export const deleteProduct = createAsyncThunk(
+  "productList/deleteProductStatus",
+  async (_id, { getState, requestId }) => {
+    const { currentRequestId, loading } = getState().productList;
+    const { user } = getState().auth;
+
+    if (loading !== "pending" || requestId !== currentRequestId) {
+      return;
+    }
+    const { data } = await axios.delete(`/api/products/${_id}`, {
+      headers: {
+        Authorization: `Bearer ${user?.token || ""}`,
+      },
+    });
     return data;
   }
 );
@@ -93,11 +101,42 @@ const productsSlice = createSlice({
       const { requestId } = action.meta;
       if (state.loading === "pending" && state.currentRequestId === requestId) {
         state.loading = "idle";
-        state.products = [...state.products, action.payload];
+        state.products = [
+          ...state.products.filter(
+            (product) => product._id !== action.payload._id
+          ),
+          action.payload,
+        ];
         state.currentRequestId = undefined;
       }
     },
     [saveProduct.rejected]: (state, action) => {
+      const { requestId } = action.meta;
+      if (state.loading === "pending" && state.currentRequestId === requestId) {
+        state.loading = "idle";
+        state.error = action.error;
+        state.currentRequestId = undefined;
+      }
+    },
+    [deleteProduct.pending]: (state, action) => {
+      if (state.loading === "idle") {
+        state.loading = "pending";
+        state.currentRequestId = action.meta.requestId;
+      }
+    },
+    [deleteProduct.fulfilled]: (state, action) => {
+      const { requestId } = action.meta;
+      if (state.loading === "pending" && state.currentRequestId === requestId) {
+        state.loading = "idle";
+        state.products = [
+          ...state.products.filter(
+            (product) => product._id !== action.payload._id
+          ),
+        ];
+        state.currentRequestId = undefined;
+      }
+    },
+    [deleteProduct.rejected]: (state, action) => {
       const { requestId } = action.meta;
       if (state.loading === "pending" && state.currentRequestId === requestId) {
         state.loading = "idle";
