@@ -28,3 +28,7 @@ input {
   border: 0.1rem var(--platinum) solid;
   border-radius: 0.5rem;
 }
+
+.small {
+  font-size: 0.75rem;
+}

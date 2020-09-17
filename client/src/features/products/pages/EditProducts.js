@@ -61,6 +61,7 @@ const EditProducts = (props) => {
       <div className="product-header">
         <h3>Products</h3>
         <button
+          className="button primary"
           onClick={() => {
             openModal({});
           }}
@@ -165,7 +166,7 @@ const EditProducts = (props) => {
                   onClick={() => {
                     setIsModalOpen(false);
                   }}
-                  className="button secondary"
+                  className="button"
                 >
                   Cancel
                 </button>
@@ -196,6 +197,7 @@ const EditProducts = (props) => {
                 <td>{product.brand}</td>
                 <td>
                   <button
+                    className="button small"
                     onClick={() => {
                       openModal(product);
                     }}
@@ -203,6 +205,7 @@ const EditProducts = (props) => {
                     Edit
                   </button>
                   <button
+                    className="button small"
                     onClick={() => {
                       handleDelete(product._id);
                     }}
