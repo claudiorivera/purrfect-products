@@ -3,6 +3,17 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 import { useSelector } from "react-redux";
 
+const navLinks = [
+  {
+    url: "/cart",
+    title: "Cart",
+  },
+  {
+    url: "/products",
+    title: "Products Admin",
+  },
+];
+
 const Header = () => {
   const auth = useSelector((state) => state.auth);
   const { user, isLoggedIn } = auth;
@@ -19,7 +30,11 @@ const Header = () => {
         <Link to="/">Purrfect Products!</Link>
       </div>
       <div className="header-links">
-        <Link to="/cart">Cart</Link>
+        {navLinks.map((link, index) => (
+          <Link key={index} to={link.url}>
+            {link.title}
+          </Link>
+        ))}
         {isLoggedIn ? (
           <Link to="/profile">{user.name}</Link>
         ) : (
