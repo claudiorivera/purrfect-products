@@ -46,20 +46,4 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.get("/createAdmin", async (req, res) => {
-  try {
-    const userToSave = new User({
-      name: "Claudio Rivera",
-      email: "me@claudiorivera.com",
-      password: "1",
-      isAdmin: true,
-    });
-
-    const savedUser = await userToSave.save();
-    res.status(201).send(savedUser);
-  } catch (error) {
-    res.status(500).send({ message: error.message });
-  }
-});
-
 module.exports = router;
