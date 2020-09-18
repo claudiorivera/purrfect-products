@@ -22,19 +22,18 @@ export const saveProduct = createAsyncThunk(
     if (loading !== "pending" || requestId !== currentRequestId) {
       return;
     }
-    // TODO: Refactor this
+    const headers = {
+      Authorization: `Bearer ${user?.token || ""}`,
+    };
+
     if (args._id) {
       const { data } = await axios.put(`/api/products/${args._id}`, args, {
-        headers: {
-          Authorization: `Bearer ${user?.token || ""}`,
-        },
+        headers,
       });
       return data;
     } else {
       const { data } = await axios.post("/api/products", args, {
-        headers: {
-          Authorization: `Bearer ${user?.token || ""}`,
-        },
+        headers,
       });
       return data;
     }
