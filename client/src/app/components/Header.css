@@ -17,6 +17,15 @@
   color: var(--platinum);
 }
 
+.brand button {
+  font-size: 3rem;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--platinum);
+  cursor: pointer;
+}
+
 .header-links a {
   color: var(--platinum);
   text-decoration: none;

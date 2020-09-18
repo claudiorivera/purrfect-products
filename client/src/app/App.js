@@ -21,8 +21,8 @@ const App = () => {
           <div className="content">
             <Route exact path="/" component={ProductList} />
             <Route exact path="/products" component={EditProducts} />
-            <Route path="/products/:id" component={ProductDetails} />
-            <Route path="/cart/:id?" component={Cart} />
+            <Route path="/products/:_id" component={ProductDetails} />
+            <Route path="/cart/:_id?" component={Cart} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
           </div>

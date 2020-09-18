@@ -7,18 +7,18 @@ import "./Cart.css";
 const Cart = (props) => {
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
-  const productId = props.match.params.id;
+  const { _id } = props.match.params;
   const dispatch = useDispatch();
   const qtyInCart = parseInt(props.location.search.split("=")[1]);
 
   useEffect(() => {
-    if (productId) {
-      dispatch(updateCart({ id: productId, qty: qtyInCart }));
+    if (_id) {
+      dispatch(updateCart({ _id, qty: qtyInCart }));
     }
-  }, [productId, qtyInCart, dispatch]);
+  }, [_id, qtyInCart, dispatch]);
 
-  const handleRemoveFromCart = (productId) => {
-    dispatch(removeFromCart(productId));
+  const handleRemoveFromCart = (_id) => {
+    dispatch(removeFromCart(_id));
   };
 
   const handleCheckOut = () => {
@@ -54,7 +54,7 @@ const Cart = (props) => {
                       onChange={(e) =>
                         dispatch(
                           updateCart({
-                            id: item._id,
+                            _id: item._id,
                             qty: parseInt(e.target.value),
                           })
                         )

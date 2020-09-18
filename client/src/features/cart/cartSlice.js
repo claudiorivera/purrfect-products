@@ -11,7 +11,7 @@ export const updateCart = createAsyncThunk(
     if (loading !== "pending" || requestId !== currentRequestId) {
       return;
     }
-    const { data } = await axios.get(`/api/products/${args.id}`);
+    const { data } = await axios.get(`/api/products/${args._id}`);
     return {
       _id: data._id,
       name: data.name,

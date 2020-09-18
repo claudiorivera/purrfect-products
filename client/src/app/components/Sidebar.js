@@ -1,6 +1,21 @@
 import React from "react";
 import "./Sidebar.css";
 
+const navLinks = [
+  {
+    url: "/categories/toys",
+    title: "Toys",
+  },
+  {
+    url: "/categories/food",
+    title: "Food",
+  },
+  {
+    url: "/categories/miscellaneous",
+    title: "Miscellaneous",
+  },
+];
+
 const Sidebar = () => {
   return (
     <aside className="sidebar">
@@ -14,15 +29,11 @@ const Sidebar = () => {
         X
       </button>
       <ul>
-        <li>
-          <a href="/categories/toys">Toys</a>
-        </li>
-        <li>
-          <a href="/categories/food">Food</a>
-        </li>
-        <li>
-          <a href="/categories/miscellaneous">Miscellaneous</a>
-        </li>
+        {navLinks.map((link, index) => (
+          <li key={index}>
+            <a href={link.url}>{link.title}</a>
+          </li>
+        ))}
       </ul>
     </aside>
   );

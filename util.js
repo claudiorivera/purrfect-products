@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 
 const getToken = (user) => {
   const { _id, name, email, isAdmin } = user;
-  jwt.sign(
+  return jwt.sign(
     {
       _id,
       name,
@@ -20,7 +20,7 @@ const isAuth = (req, res, next) => {
   const token = req.headers.authorization;
   if (token) {
     const onlyToken = token.slice(7, token.length);
-    jwt.verify(onlyToken, process.env.JWT_SECRET, (error, decode) => {
+    jwt.verify(onlyToken, process.env.JWT_SECRET, (error) => {
       if (error) return res.status(401).send({ message: "Invalid token" });
       req.user = token;
       return next();
@@ -37,4 +37,4 @@ const isAdmin = (req, res, next) => {
   }
 };
 
-export { getToken, isAuth, isAdmin };
+module.exports = { getToken, isAuth, isAdmin };

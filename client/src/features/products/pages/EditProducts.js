@@ -6,7 +6,7 @@ import "./EditProducts.css";
 
 const EditProducts = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [_id, setId] = useState(null);
+  const [_id, set_id] = useState(null);
   const [name, setName] = useState(null);
   const [image, setImage] = useState(null);
   const [brand, setBrand] = useState(null);
@@ -24,7 +24,7 @@ const EditProducts = (props) => {
 
   const openModal = (product) => {
     setIsModalOpen(true);
-    setId(product._id);
+    set_id(product._id);
     setName(product.name);
     setImage(product.image);
     setBrand(product.brand);
@@ -48,7 +48,7 @@ const EditProducts = (props) => {
         price,
       })
     );
-    props.history.push("/");
+    setIsModalOpen(false);
   };
 
   const handleDelete = (_id) => {

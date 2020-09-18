@@ -3,12 +3,12 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchProductById = createAsyncThunk(
   "productDetails/fetchProductByIdStatus",
-  async (id, { getState, requestId }) => {
+  async (_id, { getState, requestId }) => {
     const { currentRequestId, loading } = getState().productDetails;
     if (loading !== "pending" || requestId !== currentRequestId) {
       return;
     }
-    const response = await axios.get(`/api/products/${id}`);
+    const response = await axios.get(`/api/products/${_id}`);
     return response.data;
   }
 );

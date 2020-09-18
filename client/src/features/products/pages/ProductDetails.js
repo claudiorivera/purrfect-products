@@ -9,13 +9,14 @@ const ProductDetails = (props) => {
   const productDetails = useSelector((state) => state.productDetails);
   const { product, loading, error } = productDetails;
   const dispatch = useDispatch();
+  const { _id } = props.match.params;
 
   useEffect(() => {
-    dispatch(fetchProductById(props.match.params.id));
-  }, [dispatch, props.match.params.id]);
+    dispatch(fetchProductById(_id));
+  }, [dispatch, _id]);
 
   const handleAddToCart = () => {
-    props.history.push(`/cart/${props.match.params.id}?qty=${qty}`);
+    props.history.push(`/cart/${_id}?qty=${qty}`);
   };
 
   return (
