@@ -15,6 +15,7 @@ mongoose.connect(
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
+    useFindAndModify: false, // Allows us to use findOneAndUpdate()
   },
   () => {
     console.log(`Mongo connected!`);

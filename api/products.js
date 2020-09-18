@@ -56,16 +56,12 @@ router.put("/:_id", async (req, res) => {
       qtyInStock,
       price,
     } = req.body;
-    const product = await Product.findOne({ _id });
-    product.name = name;
-    product.image = image;
-    product.brand = brand;
-    product.category = category;
-    product.description = description;
-    product.qtyInStock = qtyInStock;
-    product.price = price;
-    const savedProduct = await product.save();
-    res.status(200).send(savedProduct);
+    const updatedProduct = await Product.findOneAndUpdate(
+      { _id },
+      { name, image, brand, category, description, qtyInStock, price },
+      { new: true } // Returns the updated document, instead of the original
+    );
+    res.status(200).send(updatedProduct);
   } catch (error) {
     res
       .status(500)
@@ -77,8 +73,8 @@ router.put("/:_id", async (req, res) => {
 router.delete("/:_id", async (req, res) => {
   try {
     const { _id } = req.params;
-    const product = await Product.findOneAndDelete({ _id });
-    res.status(200).send(product);
+    const deletedProduct = await Product.findOneAndDelete({ _id });
+    res.status(200).send(deletedProduct);
   } catch (error) {
     res
       .status(500)
