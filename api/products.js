@@ -90,7 +90,7 @@ router.get("/:_id", async (req, res) => {
     const product = await Product.findOne({ _id });
     res.send(product);
   } catch (error) {
-    res.status(400).send({ message: "Product not found. Please try again." });
+    res.status(404).send({ message: "Product not found. Please try again." });
   }
 });
 
