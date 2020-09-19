@@ -20,13 +20,14 @@ const isAuth = (req, res, next) => {
   const token = req.headers.authorization;
   if (token) {
     const onlyToken = token.slice(7, token.length);
-    jwt.verify(onlyToken, process.env.JWT_SECRET, (error) => {
+    jwt.verify(onlyToken, process.env.JWT_SECRET, (error, decode) => {
       if (error) return res.status(401).send({ message: "Invalid token" });
-      req.user = token;
+      req.user = decode;
       return next();
     });
+  } else {
+    res.status(401).send({ message: "Token missing" });
   }
-  req.status(401).send({ message: "Token missing" });
 };
 
 const isAdmin = (req, res, next) => {

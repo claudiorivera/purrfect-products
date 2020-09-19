@@ -1,5 +1,6 @@
 import express from "express";
 import Product from "../models/Product";
+import { isAuth, isAdmin } from "../util";
 
 const router = express.Router();
 
@@ -14,7 +15,7 @@ router.get("/", async (_, res) => {
 });
 
 // POST new product
-router.post("/", async (req, res) => {
+router.post("/", isAuth, isAdmin, async (req, res) => {
   try {
     const {
       name,
@@ -44,7 +45,7 @@ router.post("/", async (req, res) => {
 });
 
 // PUT existing product
-router.put("/:_id", async (req, res) => {
+router.put("/:_id", isAuth, isAdmin, async (req, res) => {
   try {
     const { _id } = req.params;
     const {
@@ -70,7 +71,7 @@ router.put("/:_id", async (req, res) => {
 });
 
 // DELETE existing product
-router.delete("/:_id", async (req, res) => {
+router.delete("/:_id", isAuth, isAdmin, async (req, res) => {
   try {
     const { _id } = req.params;
     const deletedProduct = await Product.findOneAndDelete({ _id });
