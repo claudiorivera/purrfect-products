@@ -31,4 +31,31 @@ input {
 
 .small {
   font-size: 0.75rem;
+  padding: 0.25rem;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.content-with-margin {
+  margin: 1rem;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  text-align: left;
+}
+
+td {
+  padding: 0.5rem;
+}
+
+tbody > tr:nth-child(odd) {
+  background-color: var(--platinum);
 }
