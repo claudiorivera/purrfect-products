@@ -22,7 +22,7 @@ const Cart = (props) => {
   };
 
   const handleCheckOut = () => {
-    props.history.push("/login?redirect=shipping");
+    props.history.push("/login?redirect=checkout");
   };
 
   return (

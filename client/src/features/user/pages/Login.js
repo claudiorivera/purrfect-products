@@ -10,12 +10,15 @@ const Login = (props) => {
   const [password, setPassword] = useState(null);
   const auth = useSelector((state) => state.auth);
   const { loading, error, isLoggedIn } = auth;
+  const redirect = props.location.search
+    ? props.location.search.split("=")[1]
+    : "/";
 
   useEffect(() => {
     if (isLoggedIn) {
-      props.history.push("/");
+      props.history.push(redirect);
     }
-  }, [isLoggedIn, props.history]);
+  }, [isLoggedIn, props.history, redirect]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -57,7 +60,12 @@ const Login = (props) => {
             </button>
           </li>
           <li>
-            <Link to="/register" className="full-width text-center">
+            <Link
+              to={
+                redirect === "/" ? "register" : `register?redirect=${redirect}`
+              }
+              className="full-width text-center"
+            >
               Need an Account? Register Here
             </Link>
           </li>

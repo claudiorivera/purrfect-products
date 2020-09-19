@@ -12,12 +12,15 @@ const Register = (props) => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   const { loading, error, isLoggedIn } = auth;
+  const redirect = props.location.search
+    ? props.location.search.split("=")[1]
+    : "/";
 
   useEffect(() => {
     if (isLoggedIn) {
-      props.history.push("/");
+      props.history.push(redirect);
     }
-  }, [isLoggedIn, props.history]);
+  }, [isLoggedIn, props.history, redirect]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -87,7 +90,10 @@ const Register = (props) => {
             </button>
           </li>
           <li>
-            <Link to="/login" className="full-width text-center">
+            <Link
+              to={redirect === "/" ? "login" : `login?redirect=${redirect}`}
+              className="full-width text-center"
+            >
               Already registered? Login here.
             </Link>
           </li>
