@@ -27,6 +27,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: {
     cartItems,
+    shippingInfo: null,
     loading: "idle",
     currentRequestId: undefined,
     error: null,
@@ -37,6 +38,9 @@ const cartSlice = createSlice({
         (item) => item._id !== action.payload
       );
       Cookie.set("cartItems", JSON.stringify(state.cartItems));
+    },
+    saveShippingInfo: (state, action) => {
+      state.shippingInfo = action.payload;
     },
   },
   extraReducers: {
@@ -77,5 +81,5 @@ const cartSlice = createSlice({
 });
 
 const { reducer, actions } = cartSlice;
-export const { removeFromCart } = actions;
+export const { removeFromCart, saveShippingInfo } = actions;
 export default reducer;
