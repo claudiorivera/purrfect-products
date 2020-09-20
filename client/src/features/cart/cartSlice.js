@@ -28,6 +28,7 @@ const cartSlice = createSlice({
   initialState: {
     cartItems,
     shippingInfo: null,
+    paymentInfo: null,
     loading: "idle",
     currentRequestId: undefined,
     error: null,
@@ -41,6 +42,9 @@ const cartSlice = createSlice({
     },
     saveShippingInfo: (state, action) => {
       state.shippingInfo = action.payload;
+    },
+    savePaymentInfo: (state, action) => {
+      state.paymentInfo = action.payload;
     },
   },
   extraReducers: {
@@ -81,5 +85,5 @@ const cartSlice = createSlice({
 });
 
 const { reducer, actions } = cartSlice;
-export const { removeFromCart, saveShippingInfo } = actions;
+export const { removeFromCart, saveShippingInfo, savePaymentInfo } = actions;
 export default reducer;

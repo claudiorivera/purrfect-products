@@ -11,6 +11,8 @@ import Register from "../features/user/pages/Register";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Payment from "../features/cart/pages/Payment";
+import Order from "../features/cart/pages/Order";
 
 const App = () => {
   return (
@@ -25,6 +27,8 @@ const App = () => {
             <Route path="/products/:_id" component={ProductDetails} />
             <Route path="/cart/:_id?" component={Cart} />
             <Route path="/checkout" component={Checkout} />
+            <Route path="/payment" component={Payment} />
+            <Route path="/order" component={Order} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
           </div>

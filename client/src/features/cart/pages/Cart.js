@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 import "./Cart.css";
 
 const Cart = (props) => {
-  const cart = useSelector((state) => state.cart);
-  const { cartItems } = cart;
+  const { cartItems } = useSelector((state) => state.cart);
   const { _id } = props.match.params;
   const dispatch = useDispatch();
   const qtyInCart = parseInt(props.location.search.split("=")[1]);

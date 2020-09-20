@@ -6,8 +6,9 @@ import "./ProductDetails.css";
 
 const ProductDetails = (props) => {
   const [qty, setQty] = useState(1);
-  const productDetails = useSelector((state) => state.productDetails);
-  const { product, loading, error } = productDetails;
+  const { product, loading, error } = useSelector(
+    (state) => state.productDetails
+  );
   const dispatch = useDispatch();
   const { _id } = props.match.params;
 

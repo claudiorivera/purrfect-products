@@ -16,5 +16,5 @@
 
 .checkout-steps > div.active {
   border-top: 0.3rem var(--orange-web) solid;
-  color: var(--oxford-blue);
+  color: var(--black);
 }

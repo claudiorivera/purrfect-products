@@ -14,8 +14,9 @@ const EditProducts = (props) => {
   const [description, setDescription] = useState(null);
   const [qtyInStock, setQtyInStock] = useState(null);
   const [price, setPrice] = useState(null);
-  const productList = useSelector((state) => state.productList);
-  const { loading, error, products } = productList;
+  const { loading, error, products } = useSelector(
+    (state) => state.productList
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {

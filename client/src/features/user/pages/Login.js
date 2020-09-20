@@ -8,8 +8,8 @@ const Login = (props) => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  const auth = useSelector((state) => state.auth);
-  const { loading, error, isLoggedIn } = auth;
+  const { loading, error, isLoggedIn } = useSelector((state) => state.auth);
+
   const redirect = props.location.search
     ? props.location.search.split("=")[1]
     : "/";

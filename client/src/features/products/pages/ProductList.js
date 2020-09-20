@@ -5,8 +5,9 @@ import { fetchAllProducts } from "../productsSlice";
 import "./ProductList.css";
 
 const ProductList = () => {
-  const productList = useSelector((state) => state.productList);
-  const { products, loading, error } = productList;
+  const { products, loading, error } = useSelector(
+    (state) => state.productList
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {

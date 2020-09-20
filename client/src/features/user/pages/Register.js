@@ -10,8 +10,8 @@ const Register = (props) => {
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
   const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth);
-  const { loading, error, isLoggedIn } = auth;
+  const { loading, error, isLoggedIn } = useSelector((state) => state.auth);
+
   const redirect = props.location.search
     ? props.location.search.split("=")[1]
     : "/";
