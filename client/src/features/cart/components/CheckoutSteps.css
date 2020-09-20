@@ -1,0 +1,20 @@
+/* Checkout Steps */
+
+.checkout-steps {
+  display: flex;
+  justify-content: space-between;
+  width: 40rem;
+  margin: 1rem auto;
+}
+
+.checkout-steps > div {
+  border-top: 0.3rem var(--spanish-gray) solid;
+  color: var(--spanish-gray);
+  flex: 1 1;
+  padding-top: 1rem;
+}
+
+.checkout-steps > div.active {
+  border-top: 0.3rem var(--orange-web) solid;
+  color: var(--oxford-blue);
+}
