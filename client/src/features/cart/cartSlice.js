@@ -3,6 +3,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import Cookie from "js-cookie";
 
 const cartItems = Cookie.getJSON("cartItems") || [];
+const shippingInfo = Cookie.getJSON("shippingInfo") || null;
+const paymentInfo = Cookie.getJSON("paymentInfo") || null;
 
 export const updateCart = createAsyncThunk(
   "cart/updateCartStatus",
@@ -27,8 +29,8 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: {
     cartItems,
-    shippingInfo: null,
-    paymentInfo: null,
+    shippingInfo,
+    paymentInfo,
     loading: "idle",
     currentRequestId: undefined,
     error: null,
@@ -42,9 +44,11 @@ const cartSlice = createSlice({
     },
     saveShippingInfo: (state, action) => {
       state.shippingInfo = action.payload;
+      Cookie.set("shippingInfo", JSON.stringify(state.shippingInfo));
     },
     savePaymentInfo: (state, action) => {
       state.paymentInfo = action.payload;
+      Cookie.set("paymentInfo", JSON.stringify(state.paymentInfo));
     },
   },
   extraReducers: {
