@@ -15,7 +15,7 @@
   flex: 1 1 20rem;
   border: 0.1rem var(--black) solid;
   border-radius: 0.5rem;
-  background-color: var(--platinum);
+  background-color: var(--cultured);
   padding: 1rem;
 }
 
@@ -27,7 +27,7 @@
 
 .cart-list-container button {
   padding: 0.25rem;
-  border: 0.1rem var(--platinum) solid;
+  border: 0.1rem var(--cultured) solid;
   cursor: pointer;
   font-size: 0.5rem;
 }
@@ -38,7 +38,7 @@
   align-items: flex-end;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
-  border-bottom: 0.1rem var(--platinum) solid;
+  border-bottom: 0.1rem var(--cultured) solid;
 }
 
 .cart-list-container li img {

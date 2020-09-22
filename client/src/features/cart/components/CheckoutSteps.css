@@ -8,8 +8,8 @@
 }
 
 .checkout-steps > div {
-  border-top: 0.3rem var(--spanish-gray) solid;
-  color: var(--spanish-gray);
+  border-top: 0.3rem var(--silver-chalice) solid;
+  color: var(--silver-chalice);
   flex: 1 1;
   padding-top: 1rem;
 }

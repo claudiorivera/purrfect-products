@@ -1,18 +1,5 @@
 /* Main  */
 
-:root {
-  --black: #000000ff;
-  --oxford-blue: #14213dff;
-  --orange-web: #fca311ff;
-  --platinum: #e5e5e5ff;
-  --spanish-gray: #8f8f8f;
-  --white: #ffffffff;
-}
-
-#root {
-  height: 100%;
-}
-
 .grid-container {
   display: grid;
   grid-template-areas:
@@ -20,7 +7,7 @@
     "main"
     "footer";
   grid-template-columns: 1fr;
-  grid-template-rows: 5rem 1fr 5rem;
+  grid-template-rows: 5rem 1fr 10rem;
   height: 100%;
 }
 
@@ -37,7 +24,7 @@ a:hover {
 }
 
 button {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .full-width {

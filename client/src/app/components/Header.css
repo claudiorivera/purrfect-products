@@ -3,7 +3,7 @@
 .header {
   grid-area: header;
   background-color: var(--oxford-blue);
-  color: var(--platinum);
+  color: var(--cultured);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,7 +14,7 @@
   font-size: 2.5rem;
   font-weight: bold;
   text-decoration: none;
-  color: var(--platinum);
+  color: var(--cultured);
 }
 
 .brand button {
@@ -22,12 +22,12 @@
   padding: 0.5rem;
   background: none;
   border: none;
-  color: var(--platinum);
+  color: var(--cultured);
   cursor: pointer;
 }
 
 .header-links a {
-  color: var(--platinum);
+  color: var(--cultured);
   text-decoration: none;
   padding: 0.5rem;
 }

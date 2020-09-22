@@ -12,7 +12,7 @@
   flex-direction: column;
   width: 32rem;
   padding: 2rem;
-  border: 0.1rem var(--platinum) solid;
+  border: 0.1rem var(--cultured) solid;
   border-radius: 0.5rem;
   list-style-type: none;
 }
@@ -25,7 +25,7 @@
 
 input {
   padding: 1rem;
-  border: 0.1rem var(--platinum) solid;
+  border: 0.1rem var(--cultured) solid;
   border-radius: 0.5rem;
 }
 
@@ -57,5 +57,5 @@ td {
 }
 
 tbody > tr:nth-child(odd) {
-  background-color: var(--platinum);
+  background-color: var(--cultured);
 }
