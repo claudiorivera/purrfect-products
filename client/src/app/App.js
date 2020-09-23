@@ -1,4 +1,4 @@
-import "./App.css";
+import styles from "./App.module.css";
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import ProductList from "../features/products/pages/ProductList";
@@ -17,10 +17,10 @@ import Order from "../features/cart/pages/Order";
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="grid-container">
+      <div className={styles.gridContainer}>
         <Header />
         <Sidebar />
-        <main className="main">
+        <main className={styles.main}>
           <Route exact path="/" component={ProductList} />
           <Route exact path="/products" component={EditProducts} />
           <Route path="/products/:_id" component={ProductDetails} />

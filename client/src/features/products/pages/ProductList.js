@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchAllProducts } from "../productsSlice";
-import "./ProductList.css";
+import styles from "./ProductList.module.css";
 
 const ProductList = () => {
   const { products, loading, error } = useSelector(
@@ -19,21 +19,21 @@ const ProductList = () => {
   ) : error ? (
     <div>{error.message}</div>
   ) : (
-    <ul className="products">
+    <ul className={styles.products}>
       {products.map((product) => (
         <li key={product._id}>
-          <div className="product">
+          <div className={styles.product}>
             <Link to={`/products/${product._id}`}>
               <img
-                className="product-image"
+                className={styles.productImage}
                 src={product.image}
                 alt={product.name}
               />
-              <div className="product-name">{product.name}</div>
+              <div className={styles.productName}>{product.name}</div>
             </Link>
-            <div className="product-brand">{product.brand}</div>
-            <div className="product-price">${product.price}</div>
-            <div className="product-rating">
+            <div className={styles.productBrand}>{product.brand}</div>
+            <div className={styles.productPrice}>${product.price}</div>
+            <div className={styles.productRating}>
               {product.rating} Stars ({product.numberOfReviews} Reviews)
             </div>
           </div>

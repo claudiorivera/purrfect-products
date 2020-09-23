@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { saveProduct, fetchAllProducts, deleteProduct } from "../productsSlice";
-import "./EditProducts.css";
+import styles from "./EditProducts.module.css";
 
 const EditProducts = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -58,8 +58,8 @@ const EditProducts = (props) => {
   };
 
   return (
-    <div className="content content-with-margin">
-      <div className="product-header">
+    <div className={styles.contentWithMargin}>
+      <div className={styles.productHeader}>
         <h3>Products</h3>
         <button
           className="button primary"
@@ -71,8 +71,8 @@ const EditProducts = (props) => {
         </button>
       </div>
       {isModalOpen && (
-        <div className="form-container">
-          <form onSubmit={handleSubmit} className="add-product-form">
+        <div className={styles.formContainer}>
+          <form onSubmit={handleSubmit} className={styles.addProductForm}>
             <ul>
               <li>
                 <h2>Add Product</h2>
@@ -176,26 +176,24 @@ const EditProducts = (props) => {
           </form>
         </div>
       )}
-      <div className="product-list">
+      <div className={styles.productList}>
         <table>
           <thead>
             <tr>
-              <th>ID</th>
               <th>Name</th>
               <th>Price</th>
               <th>Category</th>
-              <th>Brand</th>
-              <th>Action</th>
+              <th>Qty In Stock</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             {products.map((product) => (
               <tr key={product._id}>
-                <td>{product._id}</td>
                 <td>{product.name}</td>
                 <td>{product.price}</td>
                 <td>{product.category}</td>
-                <td>{product.brand}</td>
+                <td>{product.qtyInStock}</td>
                 <td>
                   <button
                     className="button small"

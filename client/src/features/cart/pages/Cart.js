@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCart, removeFromCart } from "../cartSlice";
 import { Link } from "react-router-dom";
-import "./Cart.css";
+import styles from "./Cart.module.css";
 
 const Cart = (props) => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -25,9 +25,9 @@ const Cart = (props) => {
   };
 
   return (
-    <div className="cart">
-      <div className="cart-list">
-        <ul className="cart-list-container">
+    <div className={styles.cart}>
+      <div className={styles.cartList}>
+        <ul className={styles.cartListContainer}>
           <li>
             <h3>Shopping Cart</h3>
             <div>Price</div>
@@ -37,10 +37,10 @@ const Cart = (props) => {
           ) : (
             cartItems.map((item) => (
               <li key={item._id}>
-                <div className="cart-image">
+                <div className={styles.cartImage}>
                   <img src={item.image} alt={item.name} />
                 </div>
-                <div className="cart-name">
+                <div className={styles.cartName}>
                   <div>
                     <Link to={`/products/${item._id}`}>{item.name}</Link>
                   </div>
@@ -74,13 +74,13 @@ const Cart = (props) => {
                     </button>
                   </div>
                 </div>
-                <div className="cart-price">${item.price}</div>
+                <div className={styles.cartPrice}>${item.price}</div>
               </li>
             ))
           )}
         </ul>
       </div>
-      <div className="cart-action">
+      <div className={styles.cartAction}>
         <h3>
           Subtotal (
           {cartItems.reduce(
@@ -94,7 +94,7 @@ const Cart = (props) => {
           )}
         </h3>
         <button
-          className="button primary full-width"
+          className="button primary fullWidth"
           disabled={cartItems.length === 0}
           onClick={handleCheckOut}
         >

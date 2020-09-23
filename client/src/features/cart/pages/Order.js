@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import CheckoutSteps from "../components/CheckoutSteps";
-import "./Order.css";
+import styles from "./Order.module.css";
 
 const Order = (props) => {
   const { cartItems, shippingInfo, paymentInfo } = useSelector(
@@ -18,8 +18,8 @@ const Order = (props) => {
       <div>
         <CheckoutSteps step1 step2 step3 step4 />
       </div>
-      <div className="order">
-        <div className="order-info">
+      <div className={styles.order}>
+        <div className={styles.orderInfo}>
           <div>
             <h3>Ship To</h3>
             <div>
@@ -39,23 +39,23 @@ const Order = (props) => {
           </div>
           <div>
             <h3>Order Details</h3>
-            <ul className="cart-list-container">
+            <ul className={styles.cartListContainer}>
               {cartItems.map((item) => (
                 <li key={item._id}>
-                  <div className="cart-image">
+                  <div className={styles.cartImage}>
                     <img src={item.image} alt={item.name} />
                   </div>
-                  <div className="cart-name">
+                  <div className={styles.cartName}>
                     <div>{item.name}</div>
                     <div>Qty: {item.qtyInCart}</div>
                   </div>
-                  <div className="cart-price">${item.price}</div>
+                  <div className={styles.cartPrice}>${item.price}</div>
                 </li>
               ))}
             </ul>
           </div>
         </div>
-        <div className="order-action">
+        <div className={styles.orderAction}>
           <h3>
             Subtotal (
             {cartItems.reduce(
@@ -69,7 +69,7 @@ const Order = (props) => {
               0
             )}
           </h3>
-          <button className="button primary full-width" onClick={handleSubmit}>
+          <button className="button primary fullWidth" onClick={handleSubmit}>
             Submit Order
           </button>
         </div>

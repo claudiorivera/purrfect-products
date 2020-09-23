@@ -1,23 +1,24 @@
-/* Payment */
+/* Login Form */
 
-.form-container {
+.formContainer {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 100%;
 }
 
-.payment-form ul {
+.loginForm ul {
   display: flex;
   flex-direction: column;
   width: 32rem;
   padding: 2rem;
+  margin-top: 2rem;
   border: 0.1rem var(--cultured) solid;
   border-radius: 0.5rem;
   list-style-type: none;
 }
 
-.payment-form li {
+.loginForm li {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;

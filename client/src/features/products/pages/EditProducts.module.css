@@ -1,13 +1,13 @@
 /* Edit Products Form */
 
-.form-container {
+.formContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
 }
 
-.add-product-form ul {
+.addProductForm ul {
   display: flex;
   flex-direction: column;
   width: 32rem;
@@ -17,7 +17,7 @@
   list-style-type: none;
 }
 
-.add-product-form li {
+.addProductForm li {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
@@ -34,13 +34,13 @@ input {
   padding: 0.25rem;
 }
 
-.product-header {
+.productHeader {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
 
-.content-with-margin {
+.contentWithMargin {
   margin: 1rem;
 }
 

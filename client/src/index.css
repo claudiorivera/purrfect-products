@@ -23,3 +23,21 @@ body {
   --silver-chalice: #adadad;
   --white: #ffffffff;
 }
+
+.button {
+  padding: 1rem;
+  border: 0.1rem var(--cultured) solid;
+  cursor: pointer;
+}
+
+.button:hover {
+  border: 0.1rem var(--black) solid;
+}
+
+.button.primary {
+  background-color: var(--orange-web);
+}
+
+.fullWidth {
+  width: 100%;
+}

@@ -1,13 +1,13 @@
-/* Checkout Form */
+/* Register Form */
 
-.form-container {
+.formContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
 }
 
-.checkout-form ul {
+.registerForm ul {
   display: flex;
   flex-direction: column;
   width: 32rem;
@@ -17,7 +17,7 @@
   list-style-type: none;
 }
 
-.checkout-form li {
+.registerForm li {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;

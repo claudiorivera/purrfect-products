@@ -1,6 +1,6 @@
 /* Main  */
 
-.grid-container {
+.gridContainer {
   display: grid;
   grid-template-areas:
     "header"
@@ -27,7 +27,7 @@ button {
   font-size: 1rem;
 }
 
-.full-width {
+.fullWidth {
   width: 100%;
 }
 

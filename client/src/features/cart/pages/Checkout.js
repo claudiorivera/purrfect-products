@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { saveShippingInfo } from "../cartSlice";
 import CheckoutSteps from "../components/CheckoutSteps";
-import "./Checkout.css";
+import styles from "./Checkout.module.css";
 
 const Checkout = (props) => {
   const [address, setAddress] = useState(null);
@@ -21,8 +21,8 @@ const Checkout = (props) => {
   return (
     <div>
       <CheckoutSteps step1 step2 />
-      <div className="form-container">
-        <form onSubmit={handleSubmit} className="checkout-form">
+      <div className={styles.formContainer}>
+        <form onSubmit={handleSubmit} className={styles.checkoutForm}>
           <ul>
             <li>
               <h2>Checkout</h2>

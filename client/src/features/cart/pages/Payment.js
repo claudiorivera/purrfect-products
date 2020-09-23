@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { savePaymentInfo } from "../cartSlice";
 import CheckoutSteps from "../components/CheckoutSteps";
-import "./Payment.css";
+import styles from "./Payment.module.css";
 
 const Payment = (props) => {
   const [paymentMethod, setPaymentMethod] = useState(null);
@@ -17,8 +17,8 @@ const Payment = (props) => {
   return (
     <div>
       <CheckoutSteps step1 step2 step3 />
-      <div className="form-container">
-        <form onSubmit={handleSubmit} className="payment-form">
+      <div className={styles.formContainer}>
+        <form onSubmit={handleSubmit} className={styles.paymentForm}>
           <ul>
             <li>
               <h2>Payment Method</h2>

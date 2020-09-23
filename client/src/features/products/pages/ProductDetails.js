@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProductById } from "../productDetailsSlice";
-import "./ProductDetails.css";
+import styles from "./ProductDetails.module.css";
 
 const ProductDetails = (props) => {
   const [qty, setQty] = useState(1);
@@ -22,7 +22,7 @@ const ProductDetails = (props) => {
 
   return (
     <Fragment>
-      <div className="back-to-results">
+      <div className={styles.backToResults}>
         <Link to="/">Back to results</Link>
       </div>
       {loading === "pending" ? (
@@ -30,11 +30,11 @@ const ProductDetails = (props) => {
       ) : error ? (
         <div>{error.message}</div>
       ) : (
-        <div className="details">
-          <div className="details-image">
+        <div className={styles.details}>
+          <div className={styles.detailsImage}>
             <img src={product.image} alt={product.name} />
           </div>
-          <div className="details-info">
+          <div className={styles.detailsInfo}>
             <ul>
               <li>
                 <h4>{product.name}</h4>
@@ -50,7 +50,7 @@ const ProductDetails = (props) => {
               </li>
             </ul>
           </div>
-          <div className="details-action">
+          <div className={styles.detailsAction}>
             <ul>
               <li>
                 Price: <strong>${product.price}</strong>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { register } from "../userSlice";
-import "./Register.css";
+import styles from "./Register.module.css";
 
 const Register = (props) => {
   const [email, setEmail] = useState(null);
@@ -28,8 +28,8 @@ const Register = (props) => {
   };
 
   return (
-    <div className="form-container">
-      <form onSubmit={handleSubmit} className="register-form">
+    <div className={styles.formContainer}>
+      <form onSubmit={handleSubmit} className={styles.registerForm}>
         <ul>
           <li>
             <h2>Register</h2>
@@ -92,7 +92,7 @@ const Register = (props) => {
           <li>
             <Link
               to={redirect === "/" ? "login" : `login?redirect=${redirect}`}
-              className="full-width text-center"
+              className="fullWidth text-center"
             >
               Already registered? Login here.
             </Link>

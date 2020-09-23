@@ -1,13 +1,13 @@
-/* Register Form */
+/* Payment */
 
-.form-container {
+.formContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
 }
 
-.register-form ul {
+.paymentForm ul {
   display: flex;
   flex-direction: column;
   width: 32rem;
@@ -17,7 +17,7 @@
   list-style-type: none;
 }
 
-.register-form li {
+.paymentForm li {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
