@@ -34,7 +34,7 @@ const Login = (props) => {
           <li>
             <h2>Login</h2>
           </li>
-          <li>
+          <li style={{ margin: 0 }}>
             {loading === "pending" && <div>Loading...</div>}
             {error && <div>{error.message}</div>}
           </li>

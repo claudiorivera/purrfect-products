@@ -36,7 +36,7 @@ const Register = (props) => {
           <li>
             <h2>Register</h2>
           </li>
-          <li>
+          <li style={{ margin: 0 }}>
             {loading === "pending" && <div>Loading...</div>}
             {error && <div>{error.message}</div>}
           </li>
