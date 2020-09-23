@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { saveShippingInfo } from "../cartSlice";
 import CheckoutSteps from "../components/CheckoutSteps";
-import styles from "./Shipping.module.css";
 import { Button } from "../../../app/components/Button";
 import { Container } from "../../../app/components/Container";
+import { Form } from "../../../app/components/Form";
 
 const Shipping = (props) => {
   const [address, setAddress] = useState(null);
@@ -24,7 +24,7 @@ const Shipping = (props) => {
     <div>
       <CheckoutSteps step1 step2 />
       <Container>
-        <form onSubmit={handleSubmit} className={styles.checkoutForm}>
+        <Form onSubmit={handleSubmit}>
           <ul>
             <li>
               <h2>Shipping</h2>
@@ -88,7 +88,7 @@ const Shipping = (props) => {
               </Button>
             </li>
           </ul>
-        </form>
+        </Form>
       </Container>
     </div>
   );

@@ -23,3 +23,19 @@ body {
   --silver-chalice: #adadad;
   --white: #ffffffff;
 }
+
+table {
+  width: 100%;
+}
+
+th {
+  text-align: left;
+}
+
+td {
+  padding: 0.5rem;
+}
+
+tbody > tr:nth-child(odd) {
+  background-color: var(--cultured);
+}

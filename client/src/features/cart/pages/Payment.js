@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { savePaymentInfo } from "../cartSlice";
 import CheckoutSteps from "../components/CheckoutSteps";
-import styles from "./Payment.module.css";
 import { Button } from "../../../app/components/Button";
 import { Container } from "../../../app/components/Container";
+import { Form } from "../../../app/components/Form";
 
 const Payment = (props) => {
   const [paymentMethod, setPaymentMethod] = useState(null);
@@ -20,7 +20,7 @@ const Payment = (props) => {
     <div>
       <CheckoutSteps step1 step2 step3 />
       <Container>
-        <form onSubmit={handleSubmit} className={styles.paymentForm}>
+        <Form onSubmit={handleSubmit}>
           <ul>
             <li>
               <h2>Payment Method</h2>
@@ -44,7 +44,7 @@ const Payment = (props) => {
               </Button>
             </li>
           </ul>
-        </form>
+        </Form>
       </Container>
     </div>
   );

@@ -5,6 +5,7 @@ import { saveProduct, fetchAllProducts, deleteProduct } from "../productsSlice";
 import styles from "./EditProducts.module.css";
 import { Button } from "../../../app/components/Button";
 import { Container } from "../../../app/components/Container";
+import { Form } from "../../../app/components/Form";
 
 const EditProducts = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -74,7 +75,7 @@ const EditProducts = (props) => {
       </div>
       {isModalOpen && (
         <Container>
-          <form onSubmit={handleSubmit} className={styles.addProductForm}>
+          <Form onSubmit={handleSubmit}>
             <ul>
               <li>
                 <h2>Add Product</h2>
@@ -173,7 +174,7 @@ const EditProducts = (props) => {
                 </Button>
               </li>
             </ul>
-          </form>
+          </Form>
         </Container>
       )}
       <div className={styles.productList}>

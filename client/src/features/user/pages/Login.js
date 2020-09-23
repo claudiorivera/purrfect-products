@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { login } from "../userSlice";
-import styles from "./Login.module.css";
 import { Button } from "../../../app/components/Button";
 import { Container } from "../../../app/components/Container";
+import { Form } from "../../../app/components/Form";
 
 const Login = (props) => {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const Login = (props) => {
 
   return (
     <Container>
-      <form onSubmit={handleSubmit} className={styles.loginForm}>
+      <Form onSubmit={handleSubmit}>
         <ul>
           <li>
             <h2>Login</h2>
@@ -72,7 +72,7 @@ const Login = (props) => {
             </Link>
           </li>
         </ul>
-      </form>
+      </Form>
     </Container>
   );
 };

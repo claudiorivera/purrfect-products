@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { register } from "../userSlice";
-import styles from "./Register.module.css";
 import { Button } from "../../../app/components/Button";
 import { Container } from "../../../app/components/Container";
+import { Form } from "../../../app/components/Form";
 
 const Register = (props) => {
   const [email, setEmail] = useState(null);
@@ -31,7 +31,7 @@ const Register = (props) => {
 
   return (
     <Container>
-      <form onSubmit={handleSubmit} className={styles.registerForm}>
+      <Form onSubmit={handleSubmit}>
         <ul>
           <li>
             <h2>Register</h2>
@@ -100,7 +100,7 @@ const Register = (props) => {
             </Link>
           </li>
         </ul>
-      </form>
+      </Form>
     </Container>
   );
 };
