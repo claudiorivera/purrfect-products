@@ -1,15 +1,12 @@
-import React from "react";
-import styles from "./Footer.module.css";
+import styled from "styled-components";
 
-const Footer = () => {
-  return (
-    <footer className={styles.footer}>
-      All rights reserved
-      <span role="img" aria-label="cat with heart eyes emoji">
-        😻
-      </span>
-    </footer>
-  );
-};
+const Footer = styled.footer`
+  grid-area: footer;
+  background-color: var(--oxford-blue);
+  color: var(--orange-web);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
-export default Footer;
+export { Footer };
