@@ -29,11 +29,6 @@ input {
   border-radius: 0.5rem;
 }
 
-.small {
-  font-size: 0.75rem;
-  padding: 0.25rem;
-}
-
 .productHeader {
   display: flex;
   justify-content: space-between;
