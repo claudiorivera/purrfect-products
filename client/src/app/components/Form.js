@@ -22,4 +22,4 @@ const Form = styled.form`
   }
 `;
 
-export { Form };
+export default Form;

@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import CheckoutSteps from "../components/CheckoutSteps";
 import styles from "./Order.module.css";
-import { Button } from "../../../app/components/Button";
+import Button from "../../../app/components/Button";
 
 const Order = (props) => {
   const { cartItems, shippingInfo, paymentInfo } = useSelector(

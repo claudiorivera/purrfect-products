@@ -7,4 +7,4 @@ const Container = styled.div`
   height: 100%;
 `;
 
-export { Container };
+export default Container;

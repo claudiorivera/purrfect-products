@@ -10,7 +10,7 @@ import Login from "../features/user/pages/Login";
 import Register from "../features/user/pages/Register";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
-import { Footer } from "./components/Footer";
+import Footer from "./components/Footer";
 import Payment from "../features/cart/pages/Payment";
 import Order from "../features/cart/pages/Order";
 

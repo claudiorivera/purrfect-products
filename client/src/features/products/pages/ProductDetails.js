@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProductById } from "../productDetailsSlice";
 import styles from "./ProductDetails.module.css";
-import { Button } from "../../../app/components/Button";
+import Button from "../../../app/components/Button";
 
 const ProductDetails = (props) => {
   const [qty, setQty] = useState(1);

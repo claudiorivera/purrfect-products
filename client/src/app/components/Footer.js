@@ -9,4 +9,4 @@ const Footer = styled.footer`
   justify-content: center;
 `;
 
-export { Footer };
+export default Footer;

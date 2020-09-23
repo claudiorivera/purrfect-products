@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { savePaymentInfo } from "../cartSlice";
 import CheckoutSteps from "../components/CheckoutSteps";
-import { Button } from "../../../app/components/Button";
-import { Container } from "../../../app/components/Container";
-import { Form } from "../../../app/components/Form";
+import Button from "../../../app/components/Button";
+import Container from "../../../app/components/Container";
+import Form from "../../../app/components/Form";
 
 const Payment = (props) => {
   const [paymentMethod, setPaymentMethod] = useState(null);

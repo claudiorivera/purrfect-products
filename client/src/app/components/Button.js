@@ -16,4 +16,4 @@ const Button = styled.button.attrs((props) => ({
   }
 `;
 
-export { Button };
+export default Button;
