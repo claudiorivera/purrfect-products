@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { login } from "../userSlice";
 import styles from "./Login.module.css";
+import { Button } from "../../../app/components/Button";
 
 const Login = (props) => {
   const dispatch = useDispatch();
@@ -55,16 +56,16 @@ const Login = (props) => {
             />
           </li>
           <li>
-            <button type="submit" className="button primary">
+            <Button primary type="submit">
               Log In
-            </button>
+            </Button>
           </li>
           <li>
             <Link
               to={
                 redirect === "/" ? "register" : `register?redirect=${redirect}`
               }
-              className="fullWidth text-center"
+              className="text-center"
             >
               Need an Account? Register Here
             </Link>

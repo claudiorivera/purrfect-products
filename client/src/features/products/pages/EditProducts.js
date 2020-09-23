@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { saveProduct, fetchAllProducts, deleteProduct } from "../productsSlice";
 import styles from "./EditProducts.module.css";
+import { Button } from "../../../app/components/Button";
 
 const EditProducts = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -61,14 +62,14 @@ const EditProducts = (props) => {
     <div className={styles.contentWithMargin}>
       <div className={styles.productHeader}>
         <h3>Products</h3>
-        <button
-          className="button primary"
+        <Button
+          primary
           onClick={() => {
             openModal({});
           }}
         >
           Add Product
-        </button>
+        </Button>
       </div>
       {isModalOpen && (
         <div className={styles.formContainer}>
@@ -159,18 +160,16 @@ const EditProducts = (props) => {
                 />
               </li>
               <li>
-                <button type="submit" className="button primary">
+                <Button primary type="submit">
                   {_id ? "Update" : "Add"}
-                </button>
-                <button
-                  type="button"
+                </Button>
+                <Button
                   onClick={() => {
                     setIsModalOpen(false);
                   }}
-                  className="button"
                 >
                   Cancel
-                </button>
+                </Button>
               </li>
             </ul>
           </form>
@@ -195,22 +194,22 @@ const EditProducts = (props) => {
                 <td>{product.category}</td>
                 <td>{product.qtyInStock}</td>
                 <td>
-                  <button
-                    className="button small"
+                  <Button
+                    small
                     onClick={() => {
                       openModal(product);
                     }}
                   >
                     Edit
-                  </button>
-                  <button
-                    className="button small"
+                  </Button>
+                  <Button
+                    small
                     onClick={() => {
                       handleDelete(product._id);
                     }}
                   >
                     Delete
-                  </button>
+                  </Button>
                 </td>
               </tr>
             ))}

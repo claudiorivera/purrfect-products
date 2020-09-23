@@ -23,10 +23,6 @@ a:hover {
   color: var(--orange-web);
 }
 
-.fullWidth {
-  width: 100%;
-}
-
 .text-center {
   text-align: center;
 }

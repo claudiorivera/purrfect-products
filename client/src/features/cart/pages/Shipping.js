@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { saveShippingInfo } from "../cartSlice";
 import CheckoutSteps from "../components/CheckoutSteps";
 import styles from "./Shipping.module.css";
+import { Button } from "../../../app/components/Button";
 
 const Shipping = (props) => {
   const [address, setAddress] = useState(null);
@@ -77,13 +78,13 @@ const Shipping = (props) => {
               />
             </li>
             <li>
-              <button
+              <Button
+                primary
                 type="submit"
-                className="button primary"
                 disabled={!address || !city || !state || !postalCode}
               >
                 Continue
-              </button>
+              </Button>
             </li>
           </ul>
         </form>

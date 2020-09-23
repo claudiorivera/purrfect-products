@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { savePaymentInfo } from "../cartSlice";
 import CheckoutSteps from "../components/CheckoutSteps";
 import styles from "./Payment.module.css";
+import { Button } from "../../../app/components/Button";
 
 const Payment = (props) => {
   const [paymentMethod, setPaymentMethod] = useState(null);
@@ -37,13 +38,9 @@ const Payment = (props) => {
               </div>
             </li>
             <li>
-              <button
-                type="submit"
-                className="button primary"
-                disabled={!paymentMethod}
-              >
+              <Button primary type="submit" disabled={!paymentMethod}>
                 Continue
-              </button>
+              </Button>
             </li>
           </ul>
         </form>

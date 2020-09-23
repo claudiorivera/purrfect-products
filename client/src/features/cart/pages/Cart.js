@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateCart, removeFromCart } from "../cartSlice";
 import { Link } from "react-router-dom";
 import styles from "./Cart.module.css";
+import { Button } from "../../../app/components/Button";
 
 const Cart = (props) => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -65,13 +66,12 @@ const Cart = (props) => {
                         </option>
                       ))}
                     </select>
-                    <button
-                      type="button"
-                      className="button"
+                    <Button
+                      small
                       onClick={() => handleRemoveFromCart(item._id)}
                     >
                       Remove From Cart
-                    </button>
+                    </Button>
                   </div>
                 </div>
                 <div className={styles.cartPrice}>${item.price}</div>
@@ -93,13 +93,14 @@ const Cart = (props) => {
             0
           )}
         </h3>
-        <button
-          className="button primary fullWidth"
+        <Button
+          primary
+          fullWidth
           disabled={cartItems.length === 0}
           onClick={handleCheckOut}
         >
           Proceed to Checkout
-        </button>
+        </Button>
       </div>
     </div>
   );

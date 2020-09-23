@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { register } from "../userSlice";
 import styles from "./Register.module.css";
+import { Button } from "../../../app/components/Button";
 
 const Register = (props) => {
   const [email, setEmail] = useState(null);
@@ -79,20 +80,20 @@ const Register = (props) => {
             />
           </li>
           <li>
-            <button
+            <Button
+              primary
               type="submit"
-              className="button primary"
               disabled={
                 password !== confirmPassword || !name || !email || !password
               }
             >
               Register
-            </button>
+            </Button>
           </li>
           <li>
             <Link
               to={redirect === "/" ? "login" : `login?redirect=${redirect}`}
-              className="fullWidth text-center"
+              className="text-center"
             >
               Already registered? Login here.
             </Link>

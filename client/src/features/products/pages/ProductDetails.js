@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProductById } from "../productDetailsSlice";
 import styles from "./ProductDetails.module.css";
+import { Button } from "../../../app/components/Button";
 
 const ProductDetails = (props) => {
   const [qty, setQty] = useState(1);
@@ -87,9 +88,9 @@ const ProductDetails = (props) => {
               </li>
               <li>
                 {product.qtyInStock > 0 && (
-                  <button className="button primary" onClick={handleAddToCart}>
+                  <Button primary onClick={handleAddToCart}>
                     Add to Cart
-                  </button>
+                  </Button>
                 )}
               </li>
             </ul>

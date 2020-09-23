@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import CheckoutSteps from "../components/CheckoutSteps";
 import styles from "./Order.module.css";
+import { Button } from "../../../app/components/Button";
 
 const Order = (props) => {
   const { cartItems, shippingInfo, paymentInfo } = useSelector(
@@ -69,9 +70,9 @@ const Order = (props) => {
               0
             )}
           </h3>
-          <button className="button primary fullWidth" onClick={handleSubmit}>
+          <Button primary fullWidth onClick={handleSubmit}>
             Submit Order
-          </button>
+          </Button>
         </div>
       </div>
     </div>

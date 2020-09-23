@@ -25,13 +25,6 @@
   padding: 1rem;
 }
 
-.cartListContainer button {
-  padding: 0.25rem;
-  border: 0.1rem var(--cultured) solid;
-  cursor: pointer;
-  font-size: 0.5rem;
-}
-
 .cartListContainer li {
   display: flex;
   justify-content: space-between;
