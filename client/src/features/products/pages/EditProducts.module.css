@@ -1,12 +1,5 @@
 /* Edit Products Form */
 
-.formContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
 .addProductForm ul {
   display: flex;
   flex-direction: column;

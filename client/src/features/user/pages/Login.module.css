@@ -1,12 +1,5 @@
 /* Login Form */
 
-.formContainer {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  height: 100%;
-}
-
 .loginForm ul {
   display: flex;
   flex-direction: column;

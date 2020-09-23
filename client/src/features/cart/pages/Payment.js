@@ -4,6 +4,7 @@ import { savePaymentInfo } from "../cartSlice";
 import CheckoutSteps from "../components/CheckoutSteps";
 import styles from "./Payment.module.css";
 import { Button } from "../../../app/components/Button";
+import { Container } from "../../../app/components/Container";
 
 const Payment = (props) => {
   const [paymentMethod, setPaymentMethod] = useState(null);
@@ -18,7 +19,7 @@ const Payment = (props) => {
   return (
     <div>
       <CheckoutSteps step1 step2 step3 />
-      <div className={styles.formContainer}>
+      <Container>
         <form onSubmit={handleSubmit} className={styles.paymentForm}>
           <ul>
             <li>
@@ -44,7 +45,7 @@ const Payment = (props) => {
             </li>
           </ul>
         </form>
-      </div>
+      </Container>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { register } from "../userSlice";
 import styles from "./Register.module.css";
 import { Button } from "../../../app/components/Button";
+import { Container } from "../../../app/components/Container";
 
 const Register = (props) => {
   const [email, setEmail] = useState(null);
@@ -29,7 +30,7 @@ const Register = (props) => {
   };
 
   return (
-    <div className={styles.formContainer}>
+    <Container>
       <form onSubmit={handleSubmit} className={styles.registerForm}>
         <ul>
           <li>
@@ -100,7 +101,7 @@ const Register = (props) => {
           </li>
         </ul>
       </form>
-    </div>
+    </Container>
   );
 };
 

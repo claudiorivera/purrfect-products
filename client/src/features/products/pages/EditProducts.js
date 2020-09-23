@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { saveProduct, fetchAllProducts, deleteProduct } from "../productsSlice";
 import styles from "./EditProducts.module.css";
 import { Button } from "../../../app/components/Button";
+import { Container } from "../../../app/components/Container";
 
 const EditProducts = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -72,7 +73,7 @@ const EditProducts = (props) => {
         </Button>
       </div>
       {isModalOpen && (
-        <div className={styles.formContainer}>
+        <Container>
           <form onSubmit={handleSubmit} className={styles.addProductForm}>
             <ul>
               <li>
@@ -173,7 +174,7 @@ const EditProducts = (props) => {
               </li>
             </ul>
           </form>
-        </div>
+        </Container>
       )}
       <div className={styles.productList}>
         <table>

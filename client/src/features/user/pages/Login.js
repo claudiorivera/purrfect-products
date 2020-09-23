@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { login } from "../userSlice";
 import styles from "./Login.module.css";
 import { Button } from "../../../app/components/Button";
+import { Container } from "../../../app/components/Container";
 
 const Login = (props) => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const Login = (props) => {
   };
 
   return (
-    <div className={styles.formContainer}>
+    <Container>
       <form onSubmit={handleSubmit} className={styles.loginForm}>
         <ul>
           <li>
@@ -72,7 +73,7 @@ const Login = (props) => {
           </li>
         </ul>
       </form>
-    </div>
+    </Container>
   );
 };
 

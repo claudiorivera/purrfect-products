@@ -1,12 +1,5 @@
 /* Register Form */
 
-.formContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
 .registerForm ul {
   display: flex;
   flex-direction: column;

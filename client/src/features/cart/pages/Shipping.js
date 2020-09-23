@@ -4,6 +4,7 @@ import { saveShippingInfo } from "../cartSlice";
 import CheckoutSteps from "../components/CheckoutSteps";
 import styles from "./Shipping.module.css";
 import { Button } from "../../../app/components/Button";
+import { Container } from "../../../app/components/Container";
 
 const Shipping = (props) => {
   const [address, setAddress] = useState(null);
@@ -22,7 +23,7 @@ const Shipping = (props) => {
   return (
     <div>
       <CheckoutSteps step1 step2 />
-      <div className={styles.formContainer}>
+      <Container>
         <form onSubmit={handleSubmit} className={styles.checkoutForm}>
           <ul>
             <li>
@@ -88,7 +89,7 @@ const Shipping = (props) => {
             </li>
           </ul>
         </form>
-      </div>
+      </Container>
     </div>
   );
 };
