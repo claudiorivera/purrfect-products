@@ -32,8 +32,12 @@ const App = () => {
           <Route path="/register" component={Register} />
         </main>
         <Footer>
-          All rights reserved
-          <span role="img" aria-label="cat with heart eyes emoji">
+          &copy; 2020 Claudio Rivera
+          <span
+            style={{ marginLeft: ".5rem" }}
+            role="img"
+            aria-label="cat with heart eyes emoji"
+          >
             😻
           </span>
         </Footer>
