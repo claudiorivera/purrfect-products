@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { saveShippingInfo } from "../cartSlice";
 import CheckoutSteps from "../components/CheckoutSteps";
-import styles from "./Checkout.module.css";
+import styles from "./Shipping.module.css";
 
-const Checkout = (props) => {
+const Shipping = (props) => {
   const [address, setAddress] = useState(null);
   const [address2, setAddress2] = useState(null);
   const [city, setCity] = useState(null);
@@ -25,7 +25,7 @@ const Checkout = (props) => {
         <form onSubmit={handleSubmit} className={styles.checkoutForm}>
           <ul>
             <li>
-              <h2>Checkout</h2>
+              <h2>Shipping</h2>
             </li>
             <li>
               <label htmlFor="address">Address</label>
@@ -92,4 +92,4 @@ const Checkout = (props) => {
   );
 };
 
-export default Checkout;
+export default Shipping;

@@ -21,7 +21,7 @@ const Cart = (props) => {
   };
 
   const handleCheckOut = () => {
-    props.history.push("/login?redirect=checkout");
+    props.history.push("/login?redirect=shipping");
   };
 
   return (
