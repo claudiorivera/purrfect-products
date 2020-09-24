@@ -12,6 +12,13 @@ const Review = (props) => {
   );
   const { user } = useSelector((state) => state.auth);
 
+  const subtotal = cartItems.reduce(
+    (prevItem, curItem) => prevItem + curItem.price * curItem.qtyInCart,
+    0
+  );
+  const shippingCost = subtotal > 100 ? 0 : 10;
+  const tax = subtotal * 0.15;
+
   const handleSubmit = () => {
     props.history.push("/");
   };
@@ -61,13 +68,11 @@ const Review = (props) => {
               (prevItem, curItem) => prevItem + curItem.qtyInCart,
               0
             )}{" "}
-            items): $
-            {cartItems.reduce(
-              (prevItem, curItem) =>
-                prevItem + curItem.price * curItem.qtyInCart,
-              0
-            )}
+            items): ${subtotal.toFixed(2)}
           </h3>
+          <h3>Tax: ${tax.toFixed(2)}</h3>
+          <h3>Shipping: ${shippingCost.toFixed(2)}</h3>
+          <h3>Total: ${(subtotal + tax + shippingCost).toFixed(2)}</h3>
           <Button primary fullWidth onClick={handleSubmit}>
             Submit Order
           </Button>
