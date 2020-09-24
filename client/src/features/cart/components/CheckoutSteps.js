@@ -7,7 +7,7 @@ const CheckoutSteps = (props) => {
       <div className={props.step1 ? "active" : ""}>Login</div>
       <div className={props.step2 ? "active" : ""}>Shipping</div>
       <div className={props.step3 ? "active" : ""}>Payment</div>
-      <div className={props.step4 ? "active" : ""}>Order Confirmation</div>
+      <div className={props.step4 ? "active" : ""}>Review</div>
     </div>
   );
 };

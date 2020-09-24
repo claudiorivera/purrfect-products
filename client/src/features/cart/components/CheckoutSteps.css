@@ -3,7 +3,8 @@
 .checkout-steps {
   display: flex;
   justify-content: space-between;
-  width: 40rem;
+  align-items: flex-start;
+  width: 22rem;
   margin: 1rem auto;
 }
 
@@ -11,7 +12,8 @@
   border-top: 0.3rem var(--silver-chalice) solid;
   color: var(--silver-chalice);
   flex: 1 1;
-  padding-top: 1rem;
+  padding-top: 0.5rem;
+  text-align: center;
 }
 
 .checkout-steps > div.active {
