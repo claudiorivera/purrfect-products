@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import styles from "./Cart.module.css";
 import Button from "../../../app/components/Button";
 import SubtotalContainer from "../components/SubtotalContainer";
+import CartListContainer from "../components/CartListContainer";
 
 const Cart = (props) => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -30,7 +31,7 @@ const Cart = (props) => {
     <div className={styles.cart}>
       <div className={styles.cartList}>
         <h3>Shopping Cart</h3>
-        <ul className={styles.cartListContainer}>
+        <CartListContainer>
           {cartItems.length === 0 ? (
             <div>Cart is empty</div>
           ) : (
@@ -74,7 +75,7 @@ const Cart = (props) => {
               </li>
             ))
           )}
-        </ul>
+        </CartListContainer>
       </div>
       <SubtotalContainer>
         <h3>

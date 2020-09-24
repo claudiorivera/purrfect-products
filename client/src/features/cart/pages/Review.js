@@ -4,6 +4,7 @@ import CheckoutSteps from "../components/CheckoutSteps";
 import styles from "./Review.module.css";
 import Button from "../../../app/components/Button";
 import SubtotalContainer from "../components/SubtotalContainer";
+import CartListContainer from "../components/CartListContainer";
 
 const Review = (props) => {
   const { cartItems, shippingInfo, paymentInfo } = useSelector(
@@ -39,7 +40,7 @@ const Review = (props) => {
           </div>
           <div>
             <h3>Order Details</h3>
-            <ul className={styles.cartListContainer}>
+            <CartListContainer>
               {cartItems.map((item) => (
                 <li key={item._id}>
                   <img src={item.image} alt={item.name} />
@@ -50,7 +51,7 @@ const Review = (props) => {
                   <div className={styles.cartPrice}>${item.price}</div>
                 </li>
               ))}
-            </ul>
+            </CartListContainer>
           </div>
         </div>
         <SubtotalContainer>
