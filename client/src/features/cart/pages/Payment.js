@@ -13,7 +13,7 @@ const Payment = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(savePaymentInfo({ paymentMethod }));
-    props.history.push("/order");
+    props.history.push("/review");
   };
 
   return (

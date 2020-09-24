@@ -1,10 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import CheckoutSteps from "../components/CheckoutSteps";
-import styles from "./Order.module.css";
+import styles from "./Review.module.css";
 import Button from "../../../app/components/Button";
 
-const Order = (props) => {
+const Review = (props) => {
   const { cartItems, shippingInfo, paymentInfo } = useSelector(
     (state) => state.cart
   );
@@ -15,11 +15,9 @@ const Order = (props) => {
   };
 
   return (
-    <div>
-      <div>
-        <CheckoutSteps step1 step2 step3 step4 />
-      </div>
-      <div className={styles.order}>
+    <>
+      <CheckoutSteps step1 step2 step3 step4 />
+      <div className={styles.review}>
         <div className={styles.orderInfo}>
           <div>
             <h3>Ship To</h3>
@@ -75,8 +73,8 @@ const Order = (props) => {
           </Button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default Order;
+export default Review;

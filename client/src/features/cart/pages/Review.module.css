@@ -1,6 +1,6 @@
 /* Order Confirmation */
 
-.order {
+.review {
   display: flex;
   flex-wrap: wrap;
   margin: 1rem;
@@ -8,7 +8,7 @@
 }
 
 .orderInfo {
-  flex: 2 1 60rem;
+  flex: 2 1 20rem;
 }
 
 .orderAction {
