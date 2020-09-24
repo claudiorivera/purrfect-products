@@ -4,6 +4,7 @@ import { updateCart, removeFromCart } from "../cartSlice";
 import { Link } from "react-router-dom";
 import styles from "./Cart.module.css";
 import Button from "../../../app/components/Button";
+import SubtotalContainer from "../components/SubtotalContainer";
 
 const Cart = (props) => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -28,16 +29,14 @@ const Cart = (props) => {
   return (
     <div className={styles.cart}>
       <div className={styles.cartList}>
+        <h3>Shopping Cart</h3>
         <ul className={styles.cartListContainer}>
-          <h3>Shopping Cart</h3>
           {cartItems.length === 0 ? (
             <div>Cart is empty</div>
           ) : (
             cartItems.map((item) => (
               <li key={item._id}>
-                <div className={styles.cartImage}>
-                  <img src={item.image} alt={item.name} />
-                </div>
+                <img src={item.image} alt={item.name} />
                 <div className={styles.cartName}>
                   <div>
                     <Link to={`/products/${item._id}`}>{item.name}</Link>
@@ -77,7 +76,7 @@ const Cart = (props) => {
           )}
         </ul>
       </div>
-      <div className={styles.cartAction}>
+      <SubtotalContainer>
         <h3>
           Subtotal (
           {cartItems.reduce(
@@ -90,15 +89,10 @@ const Cart = (props) => {
             0
           )}
         </h3>
-        <Button
-          primary
-          fullWidth
-          disabled={cartItems.length === 0}
-          onClick={handleCheckOut}
-        >
+        <Button primary fullWidth onClick={handleCheckOut}>
           Proceed to Checkout
         </Button>
-      </div>
+      </SubtotalContainer>
     </div>
   );
 };

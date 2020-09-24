@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import CheckoutSteps from "../components/CheckoutSteps";
 import styles from "./Review.module.css";
 import Button from "../../../app/components/Button";
+import SubtotalContainer from "../components/SubtotalContainer";
 
 const Review = (props) => {
   const { cartItems, shippingInfo, paymentInfo } = useSelector(
@@ -41,9 +42,7 @@ const Review = (props) => {
             <ul className={styles.cartListContainer}>
               {cartItems.map((item) => (
                 <li key={item._id}>
-                  <div className={styles.cartImage}>
-                    <img src={item.image} alt={item.name} />
-                  </div>
+                  <img src={item.image} alt={item.name} />
                   <div className={styles.cartName}>
                     <div>{item.name}</div>
                     <div>Qty: {item.qtyInCart}</div>
@@ -54,7 +53,7 @@ const Review = (props) => {
             </ul>
           </div>
         </div>
-        <div className={styles.orderAction}>
+        <SubtotalContainer>
           <h3>
             Subtotal (
             {cartItems.reduce(
@@ -71,7 +70,7 @@ const Review = (props) => {
           <Button primary fullWidth onClick={handleSubmit}>
             Submit Order
           </Button>
-        </div>
+        </SubtotalContainer>
       </div>
     </>
   );

@@ -11,14 +11,6 @@
   flex: 2 1 40rem;
 }
 
-.orderAction {
-  flex: 1 1 20rem;
-  border: 0.1rem var(--black) solid;
-  border-radius: 0.5rem;
-  background-color: var(--cultured);
-  padding: 1rem;
-}
-
 .cartListContainer {
   padding: 0;
   list-style-type: none;
