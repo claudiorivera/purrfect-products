@@ -1,4 +1,4 @@
-/* Order Confirmation */
+/* Order Review */
 
 .review {
   display: flex;
@@ -8,7 +8,7 @@
 }
 
 .orderInfo {
-  flex: 2 1 20rem;
+  flex: 2 1 40rem;
 }
 
 .orderAction {
@@ -45,16 +45,12 @@
   align-items: flex-end;
 }
 
-.cartImage {
-  flex: 1 1;
-}
-
 .cartName {
   flex: 8 1;
 }
 
 .cartPrice {
   flex: 1 1;
-  font-size: 2.5rem;
+  font-size: 2rem;
   text-align: right;
 }

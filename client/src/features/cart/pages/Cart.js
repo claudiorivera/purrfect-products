@@ -29,10 +29,7 @@ const Cart = (props) => {
     <div className={styles.cart}>
       <div className={styles.cartList}>
         <ul className={styles.cartListContainer}>
-          <li>
-            <h3>Shopping Cart</h3>
-            <div>Price</div>
-          </li>
+          <h3>Shopping Cart</h3>
           {cartItems.length === 0 ? (
             <div>Cart is empty</div>
           ) : (
@@ -46,7 +43,7 @@ const Cart = (props) => {
                     <Link to={`/products/${item._id}`}>{item.name}</Link>
                   </div>
                   <div>
-                    Qty:
+                    <label htmlFor="qtyInCart">Qty:</label>
                     <select
                       name="qtyInCart"
                       id="qtyInCart"
