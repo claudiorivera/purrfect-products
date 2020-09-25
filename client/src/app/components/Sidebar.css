@@ -3,8 +3,8 @@
 .sidebar {
   position: fixed;
   transition: all 0.5s;
-  transform: translateX(-30rem);
-  width: 30rem;
+  transform: translateX(-20rem);
+  width: 20rem;
   background-color: var(--cultured);
   height: 100%;
 }
