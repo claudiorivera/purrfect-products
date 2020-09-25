@@ -56,9 +56,13 @@ const Review = (props) => {
                   <img src={item.image} alt={item.name} />
                   <CartItemInfoContainer>
                     <div>{item.name}</div>
-                    <div>Qty: {item.qtyInCart}</div>
+                    <div>
+                      Qty: {item.qtyInCart} @ ${item.price}
+                    </div>
                   </CartItemInfoContainer>
-                  <CartItemPriceContainer>${item.price}</CartItemPriceContainer>
+                  <CartItemPriceContainer>
+                    ${(item.price * item.qtyInCart).toFixed(2)}
+                  </CartItemPriceContainer>
                 </li>
               ))}
             </CartListContainer>

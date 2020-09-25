@@ -13,8 +13,7 @@ const CartListContainer = styled.ul`
     border-bottom: 0.1rem var(--cultured) solid;
   }
   li img {
-    max-width: 10rem;
-    max-height: 10rem;
+    max-width: 8rem;
   }
   li:first-child {
     display: flex;
