@@ -1,6 +1,6 @@
-import express from "express";
-import User from "../models/User";
-import { getToken } from "../util";
+const express = require("express");
+const User = require("../models/User");
+const { getToken } = require("../util");
 
 const router = express.Router();
 

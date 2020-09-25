@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+const jwt = require("jsonwebtoken");
 
 const getToken = (user) => {
   const { _id, name, email, isAdmin } = user;
