@@ -1,5 +1,5 @@
 {
-  "name": "shopping-site-tutorial",
+  "name": "purrfect-products-server",
   "version": "1.0.0",
   "description": "A shopping site for cats",
   "author": "Claudio Rivera <me@claudiorivera.com>",
@@ -7,16 +7,17 @@
   "private": true,
   "scripts": {
     "start": "node server",
-    "client-install": "yarn --cwd client",
+    "build": "yarn --cwd client install && yarn --cwd client build",
     "dev-server": "nodemon --ignore client server.js",
-    "dev-server-start": "DEBUG=game-night-server:* yarn run dev-server",
+    "dev-server-start": "DEBUG=purrfect-products-server:* yarn run dev-server",
+    "client-install": "yarn --cwd client",
     "client-start": "yarn --cwd client start",
     "dev": "concurrently --names 'SERVER,CLIENT' -c 'bgBlue.bold,bgMagenta.bold' 'yarn run dev-server-start' 'yarn run client-start'"
   },
   "dependencies": {
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.3"
+    "mongoose": "5.10.7"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
