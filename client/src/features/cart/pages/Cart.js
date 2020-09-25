@@ -2,10 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCart, removeFromCart } from "../cartSlice";
 import { Link } from "react-router-dom";
-import styles from "./Cart.module.css";
 import Button from "../../../app/components/Button";
+import OrderContainer from "../components/OrderContainer";
+import CartContainer from "../components/CartContainer";
 import SubtotalContainer from "../components/SubtotalContainer";
 import CartListContainer from "../components/CartListContainer";
+import CartItemInfoContainer from "../components/CartItemInfoContainer";
+import CartItemPriceContainer from "../components/CartItemPriceContainer";
 
 const Cart = (props) => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -28,8 +31,8 @@ const Cart = (props) => {
   };
 
   return (
-    <div className={styles.cart}>
-      <div className={styles.cartList}>
+    <CartContainer>
+      <OrderContainer>
         <h3>Shopping Cart</h3>
         <CartListContainer>
           {cartItems.length === 0 ? (
@@ -38,7 +41,7 @@ const Cart = (props) => {
             cartItems.map((item) => (
               <li key={item._id}>
                 <img src={item.image} alt={item.name} />
-                <div className={styles.cartName}>
+                <CartItemInfoContainer>
                   <div>
                     <Link to={`/products/${item._id}`}>{item.name}</Link>
                   </div>
@@ -70,13 +73,13 @@ const Cart = (props) => {
                       Remove From Cart
                     </Button>
                   </div>
-                </div>
-                <div className={styles.cartPrice}>${item.price}</div>
+                </CartItemInfoContainer>
+                <CartItemPriceContainer>${item.price}</CartItemPriceContainer>
               </li>
             ))
           )}
         </CartListContainer>
-      </div>
+      </OrderContainer>
       <SubtotalContainer>
         <h3>
           Subtotal (
@@ -94,7 +97,7 @@ const Cart = (props) => {
           Proceed to Checkout
         </Button>
       </SubtotalContainer>
-    </div>
+    </CartContainer>
   );
 };
 

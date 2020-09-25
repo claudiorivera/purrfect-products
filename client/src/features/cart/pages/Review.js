@@ -1,10 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import CheckoutSteps from "../components/CheckoutSteps";
-import styles from "./Review.module.css";
 import Button from "../../../app/components/Button";
+import OrderContainer from "../components/OrderContainer";
 import SubtotalContainer from "../components/SubtotalContainer";
 import CartListContainer from "../components/CartListContainer";
+import CartContainer from "../components/CartContainer";
+import CartItemInfoContainer from "../components/CartItemInfoContainer";
+import CartItemPriceContainer from "../components/CartItemPriceContainer";
 
 const Review = (props) => {
   const { cartItems, shippingInfo, paymentInfo } = useSelector(
@@ -26,8 +29,8 @@ const Review = (props) => {
   return (
     <>
       <CheckoutSteps step1 step2 step3 step4 />
-      <div className={styles.review}>
-        <div className={styles.orderInfo}>
+      <CartContainer>
+        <OrderContainer>
           <div>
             <h3>Ship To</h3>
             <div>
@@ -51,16 +54,16 @@ const Review = (props) => {
               {cartItems.map((item) => (
                 <li key={item._id}>
                   <img src={item.image} alt={item.name} />
-                  <div className={styles.cartName}>
+                  <CartItemInfoContainer>
                     <div>{item.name}</div>
                     <div>Qty: {item.qtyInCart}</div>
-                  </div>
-                  <div className={styles.cartPrice}>${item.price}</div>
+                  </CartItemInfoContainer>
+                  <CartItemPriceContainer>${item.price}</CartItemPriceContainer>
                 </li>
               ))}
             </CartListContainer>
           </div>
-        </div>
+        </OrderContainer>
         <SubtotalContainer>
           <h3>
             Subtotal (
@@ -77,7 +80,7 @@ const Review = (props) => {
             Submit Order
           </Button>
         </SubtotalContainer>
-      </div>
+      </CartContainer>
     </>
   );
 };
