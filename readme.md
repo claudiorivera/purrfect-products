@@ -6,9 +6,12 @@ I opted to use some `styled-components` and also took advantage of the `@reduxjs
 
 # To-Do
 
+- Render Products Admin page for admins only
 - Profile page
-- Thank You page
+- Post-order "Thank You" page
   - Updates state and inventory
+- Image upload on Add Product page
+  - Move all local images to the cloud first
 
 # Credits
 
