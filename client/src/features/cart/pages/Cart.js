@@ -16,6 +16,16 @@ const Cart = (props) => {
   const dispatch = useDispatch();
   const qtyInCart = parseInt(props.location.search.split("=")[1]);
 
+  const subtotal = cartItems.reduce(
+    (prevItem, curItem) => prevItem + curItem.price * curItem.qtyInCart,
+    0
+  );
+
+  const numberOfItemsInCart = cartItems.reduce(
+    (prevItem, curItem) => prevItem + curItem.qtyInCart,
+    0
+  );
+
   useEffect(() => {
     if (_id) {
       dispatch(updateCart({ _id, qty: qtyInCart }));
@@ -82,16 +92,8 @@ const Cart = (props) => {
       </OrderContainer>
       <SubtotalContainer>
         <h3>
-          Subtotal (
-          {cartItems.reduce(
-            (prevItem, curItem) => prevItem + curItem.qtyInCart,
-            0
-          )}{" "}
-          items): $
-          {cartItems.reduce(
-            (prevItem, curItem) => prevItem + curItem.price * curItem.qtyInCart,
-            0
-          )}
+          Subtotal ({numberOfItemsInCart} item
+          {numberOfItemsInCart === 1 ? "" : "s"}): ${subtotal.toFixed(2)}
         </h3>
         <Button primary fullWidth onClick={handleCheckOut}>
           Proceed to Checkout

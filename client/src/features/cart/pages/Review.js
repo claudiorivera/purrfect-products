@@ -21,6 +21,10 @@ const Review = (props) => {
   );
   const shippingCost = subtotal > 100 ? 0 : 10;
   const tax = subtotal * 0.15;
+  const numberOfItemsInCart = cartItems.reduce(
+    (prevItem, curItem) => prevItem + curItem.qtyInCart,
+    0
+  );
 
   const handleSubmit = () => {
     props.history.push("/");
@@ -70,12 +74,8 @@ const Review = (props) => {
         </OrderContainer>
         <SubtotalContainer>
           <h3>
-            Subtotal (
-            {cartItems.reduce(
-              (prevItem, curItem) => prevItem + curItem.qtyInCart,
-              0
-            )}{" "}
-            items): ${subtotal.toFixed(2)}
+            Subtotal ({numberOfItemsInCart} item
+            {numberOfItemsInCart === 1 ? "" : "s"}): ${subtotal.toFixed(2)}
           </h3>
           <h3>Tax: ${tax.toFixed(2)}</h3>
           <h3>Shipping: ${shippingCost.toFixed(2)}</h3>
