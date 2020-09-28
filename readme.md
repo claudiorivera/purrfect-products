@@ -6,9 +6,6 @@ I opted to use some `styled-components` and also took advantage of the `@reduxjs
 
 # To-Do
 
-- Logout
-  - APi /logout route
-  - Logout button in NavBar (conditional)
 - Profile page
 - Thank You page
   - Updates state and inventory
