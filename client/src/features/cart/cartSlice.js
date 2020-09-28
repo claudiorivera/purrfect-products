@@ -40,15 +40,15 @@ const cartSlice = createSlice({
       state.cartItems = state.cartItems.filter(
         (item) => item._id !== action.payload
       );
-      Cookie.set("cartItems", JSON.stringify(state.cartItems));
+      Cookie.set("pp-cartItems", JSON.stringify(state.cartItems));
     },
     saveShippingInfo: (state, action) => {
       state.shippingInfo = action.payload;
-      Cookie.set("shippingInfo", JSON.stringify(state.shippingInfo));
+      Cookie.set("pp-shippingInfo", JSON.stringify(state.shippingInfo));
     },
     savePaymentInfo: (state, action) => {
       state.paymentInfo = action.payload;
-      Cookie.set("paymentInfo", JSON.stringify(state.paymentInfo));
+      Cookie.set("pp-paymentInfo", JSON.stringify(state.paymentInfo));
     },
   },
   extraReducers: {
@@ -73,7 +73,7 @@ const cartSlice = createSlice({
         } else {
           state.cartItems.push(action.payload);
         }
-        Cookie.set("cartItems", JSON.stringify(state.cartItems));
+        Cookie.set("pp-cartItems", JSON.stringify(state.cartItems));
         state.currentRequestId = undefined;
       }
     },

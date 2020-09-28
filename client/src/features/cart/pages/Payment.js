@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { savePaymentInfo } from "../cartSlice";
 import CheckoutSteps from "../components/CheckoutSteps";
 import Button from "../../../app/components/Button";
@@ -9,6 +9,10 @@ import Form from "../../../app/components/Form";
 const Payment = (props) => {
   const [paymentMethod, setPaymentMethod] = useState(null);
   const dispatch = useDispatch();
+
+  const { isLoggedIn } = useSelector((state) => state.auth);
+
+  if (!isLoggedIn) props.history.push("/login?redirect=payment");
 
   const handleSubmit = (e) => {
     e.preventDefault();

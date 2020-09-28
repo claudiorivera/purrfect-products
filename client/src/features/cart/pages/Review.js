@@ -13,7 +13,9 @@ const Review = (props) => {
   const { cartItems, shippingInfo, paymentInfo } = useSelector(
     (state) => state.cart
   );
-  const { user } = useSelector((state) => state.auth);
+  const { user, isLoggedIn } = useSelector((state) => state.auth);
+
+  if (!isLoggedIn) props.history.push("/login?redirect=review");
 
   const subtotal = cartItems.reduce(
     (prevItem, curItem) => prevItem + curItem.price * curItem.qtyInCart,

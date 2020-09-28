@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../features/user/userSlice";
 
 const navLinks = [
   {
@@ -15,8 +16,16 @@ const navLinks = [
 ];
 
 const Header = () => {
+  const location = useLocation();
   const auth = useSelector((state) => state.auth);
-  const { user, isLoggedIn } = auth;
+  const { isLoggedIn } = auth;
+  const dispatch = useDispatch();
+
+  const redirect = location.pathname.slice(1) || "/";
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
   return (
     <header className="header">
       <div className="brand">
@@ -36,9 +45,11 @@ const Header = () => {
           </Link>
         ))}
         {isLoggedIn ? (
-          <Link to="/profile">{user.name}</Link>
+          <Link to={`/login?redirect=${redirect}`} onClick={handleLogout}>
+            Logout
+          </Link>
         ) : (
-          <Link to="/login">Login</Link>
+          <Link to={`/login?redirect=${redirect}`}>Login</Link>
         )}
       </div>
     </header>

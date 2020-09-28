@@ -52,7 +52,7 @@ const userSlice = createSlice({
     logout: (state, action) => {
       state.isLoggedIn = false;
       state.user = null;
-      Cookie.remove("user");
+      Cookie.remove("pp-user");
     },
   },
   extraReducers: {
@@ -68,7 +68,7 @@ const userSlice = createSlice({
         state.loading = "idle";
         state.user = action.payload;
         state.isLoggedIn = true;
-        Cookie.set("user", JSON.stringify(state.user));
+        Cookie.set("pp-user", JSON.stringify(state.user));
         state.currentRequestId = undefined;
       }
     },
@@ -93,7 +93,7 @@ const userSlice = createSlice({
         state.loading = "idle";
         state.user = action.payload;
         state.isLoggedIn = true;
-        Cookie.set("user", JSON.stringify(state.user));
+        Cookie.set("pp-user", JSON.stringify(state.user));
         state.currentRequestId = undefined;
       }
     },

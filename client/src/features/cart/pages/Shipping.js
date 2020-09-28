@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { saveShippingInfo } from "../cartSlice";
 import CheckoutSteps from "../components/CheckoutSteps";
 import Button from "../../../app/components/Button";
@@ -13,6 +13,9 @@ const Shipping = (props) => {
   const [state, setState] = useState(null);
   const [postalCode, setPostalCode] = useState(null);
   const dispatch = useDispatch();
+  const { isLoggedIn } = useSelector((state) => state.auth);
+
+  if (!isLoggedIn) props.history.push("/login?redirect=shipping");
 
   const handleSubmit = (e) => {
     e.preventDefault();
