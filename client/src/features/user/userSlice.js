@@ -48,7 +48,13 @@ const userSlice = createSlice({
     isLoggedIn,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    logout: (state, action) => {
+      state.isLoggedIn = false;
+      state.user = null;
+      Cookie.remove("user");
+    },
+  },
   extraReducers: {
     [login.pending]: (state, action) => {
       if (state.loading === "idle") {
@@ -103,5 +109,6 @@ const userSlice = createSlice({
   },
 });
 
-const { reducer } = userSlice;
+const { reducer, actions } = userSlice;
+export const { logout } = actions;
 export default reducer;
