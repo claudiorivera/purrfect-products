@@ -8,7 +8,6 @@ import Cart from "../features/cart/pages/Cart";
 import Shipping from "../features/cart/pages/Shipping";
 import Login from "../features/user/pages/Login";
 import Register from "../features/user/pages/Register";
-import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Payment from "../features/cart/pages/Payment";
@@ -19,7 +18,6 @@ const App = () => {
     <BrowserRouter>
       <div className={styles.gridContainer}>
         <Header />
-        <Sidebar />
         <main className={styles.main}>
           <Route exact path="/" component={ProductList} />
           <Route exact path="/products" component={EditProducts} />

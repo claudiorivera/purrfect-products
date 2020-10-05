@@ -1,8 +1,8 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
-import "./Header.css";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
 import { logout } from "../../features/user/userSlice";
+import "./Header.css";
 
 const navLinks = [
   {
@@ -29,13 +29,6 @@ const Header = () => {
   return (
     <header className="header">
       <div className="brand">
-        <button
-          onClick={() => {
-            document.querySelector(".sidebar").classList.add("open");
-          }}
-        >
-          &#9776;
-        </button>
         <Link to="/">Purrfect Products!</Link>
       </div>
       <div className="header-links">
