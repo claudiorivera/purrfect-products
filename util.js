@@ -31,14 +31,12 @@ const isAuth = (req, res, next) => {
 };
 
 const isAdmin = (req, res, next) => {
-  if (req.user?.isAdmin) {
+  if (req.user && req.user.isAdmin) {
     return next();
   } else {
-    return res
-      .status(401)
-      .send({
-        message: "Only admins can do that, and the admin token is invalid.",
-      });
+    return res.status(401).send({
+      message: "Only admins can do that, and the admin token is invalid.",
+    });
   }
 };
 
