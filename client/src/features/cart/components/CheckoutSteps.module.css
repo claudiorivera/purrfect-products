@@ -1,6 +1,6 @@
 /* Checkout Steps */
 
-.checkout-steps {
+.checkoutSteps {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -8,7 +8,7 @@
   margin: 1rem auto;
 }
 
-.checkout-steps > div {
+.checkoutSteps > div {
   border-top: 0.3rem var(--silver-chalice) solid;
   color: var(--silver-chalice);
   flex: 1 1;
@@ -16,7 +16,7 @@
   text-align: center;
 }
 
-.checkout-steps > div.active {
+.checkoutSteps > div.active {
   border-top: 0.3rem var(--orange-web) solid;
   color: var(--black);
 }

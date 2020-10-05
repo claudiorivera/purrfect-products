@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateCart, removeFromCart } from "../cartSlice";
 import { Link } from "react-router-dom";
 import Button from "../../../app/components/Button";
-import OrderContainer from "../components/OrderContainer";
+import { removeFromCart, updateCart } from "../cartSlice";
 import CartContainer from "../components/CartContainer";
-import SubtotalContainer from "../components/SubtotalContainer";
-import CartListContainer from "../components/CartListContainer";
 import CartItemInfoContainer from "../components/CartItemInfoContainer";
 import CartItemPriceContainer from "../components/CartItemPriceContainer";
+import CartListContainer from "../components/CartListContainer";
+import OrderContainer from "../components/OrderContainer";
+import SubtotalContainer from "../components/SubtotalContainer";
 
 const Cart = (props) => {
   const { cartItems } = useSelector((state) => state.cart);

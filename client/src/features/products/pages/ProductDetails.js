@@ -1,9 +1,9 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import Button from "../../../app/components/Button";
 import { fetchProductById } from "../productDetailsSlice";
 import styles from "./ProductDetails.module.css";
-import Button from "../../../app/components/Button";
 
 const ProductDetails = (props) => {
   const [qty, setQty] = useState(1);

@@ -1,17 +1,17 @@
-import styles from "./App.module.css";
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import ProductList from "../features/products/pages/ProductList";
-import ProductDetails from "../features/products/pages/ProductDetails";
-import EditProducts from "../features/products/pages/EditProducts";
 import Cart from "../features/cart/pages/Cart";
-import Shipping from "../features/cart/pages/Shipping";
-import Login from "../features/user/pages/Login";
-import Register from "../features/user/pages/Register";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 import Payment from "../features/cart/pages/Payment";
 import Review from "../features/cart/pages/Review";
+import Shipping from "../features/cart/pages/Shipping";
+import EditProducts from "../features/products/pages/EditProducts";
+import ProductDetails from "../features/products/pages/ProductDetails";
+import ProductList from "../features/products/pages/ProductList";
+import Login from "../features/user/pages/Login";
+import Register from "../features/user/pages/Register";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import styles from "./App.module.css";
 
 const App = () => {
   return (

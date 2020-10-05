@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { saveProduct, fetchAllProducts, deleteProduct } from "../productsSlice";
-import styles from "./EditProducts.module.css";
 import Button from "../../../app/components/Button";
 import Container from "../../../app/components/Container";
 import Form from "../../../app/components/Form";
+import { deleteProduct, fetchAllProducts, saveProduct } from "../productsSlice";
+import styles from "./EditProducts.module.css";
 
 const EditProducts = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);

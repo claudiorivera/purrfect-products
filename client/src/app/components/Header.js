@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { logout } from "../../features/user/userSlice";
-import "./Header.css";
+import styles from "./Header.module.css";
 
 const navLinks = [
   {
@@ -27,11 +27,11 @@ const Header = () => {
     dispatch(logout());
   };
   return (
-    <header className="header">
-      <div className="brand">
+    <header className={styles.header}>
+      <div className={styles.brand}>
         <Link to="/">Purrfect Products!</Link>
       </div>
-      <div className="header-links">
+      <div className={styles.headerLinks}>
         {navLinks.map((link, index) => (
           <Link key={index} to={link.url}>
             {link.title}

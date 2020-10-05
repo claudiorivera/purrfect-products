@@ -1,13 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import CheckoutSteps from "../components/CheckoutSteps";
 import Button from "../../../app/components/Button";
-import OrderContainer from "../components/OrderContainer";
-import SubtotalContainer from "../components/SubtotalContainer";
-import CartListContainer from "../components/CartListContainer";
 import CartContainer from "../components/CartContainer";
 import CartItemInfoContainer from "../components/CartItemInfoContainer";
 import CartItemPriceContainer from "../components/CartItemPriceContainer";
+import CartListContainer from "../components/CartListContainer";
+import CheckoutSteps from "../components/CheckoutSteps";
+import OrderContainer from "../components/OrderContainer";
+import SubtotalContainer from "../components/SubtotalContainer";
 
 const Review = (props) => {
   const { cartItems, shippingInfo, paymentInfo } = useSelector(
