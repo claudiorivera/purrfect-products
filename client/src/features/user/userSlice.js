@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import Cookie from "js-cookie";
+import Cookies from "js-cookie";
 
-const user = Cookie.getJSON("user") || null;
-const isLoggedIn = user ? true : false;
+const user = Cookies.get("pp-user");
+const isLoggedIn = !!user;
 
 export const login = createAsyncThunk(
   "auth/loginStatus",
@@ -42,7 +42,7 @@ export const register = createAsyncThunk(
 const userSlice = createSlice({
   name: "auth",
   initialState: {
-    user,
+    user: user ? JSON.parse(user) : {},
     loading: "idle",
     currentRequestId: undefined,
     isLoggedIn,
@@ -52,7 +52,7 @@ const userSlice = createSlice({
     logout: (state, action) => {
       state.isLoggedIn = false;
       state.user = null;
-      Cookie.remove("pp-user");
+      Cookies.remove("pp-user");
     },
   },
   extraReducers: {
@@ -68,7 +68,7 @@ const userSlice = createSlice({
         state.loading = "idle";
         state.user = action.payload;
         state.isLoggedIn = true;
-        Cookie.set("pp-user", JSON.stringify(state.user));
+        Cookies.set("pp-user", JSON.stringify(state.user));
         state.currentRequestId = undefined;
       }
     },
@@ -93,7 +93,7 @@ const userSlice = createSlice({
         state.loading = "idle";
         state.user = action.payload;
         state.isLoggedIn = true;
-        Cookie.set("pp-user", JSON.stringify(state.user));
+        Cookies.set("pp-user", JSON.stringify(state.user));
         state.currentRequestId = undefined;
       }
     },

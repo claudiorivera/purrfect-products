@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import Cookie from "js-cookie";
+import Cookies from "js-cookie";
 
-const cartItems = Cookie.getJSON("cartItems") || [];
-const shippingInfo = Cookie.getJSON("shippingInfo") || null;
-const paymentInfo = Cookie.getJSON("paymentInfo") || null;
+const cartItems = Cookies.get("pp-cartItems");
+const shippingInfo = Cookies.get("pp-shippingInfo");
+const paymentInfo = Cookies.get("pp-paymentInfo");
 
 export const updateCart = createAsyncThunk(
   "cart/updateCartStatus",
@@ -28,9 +28,9 @@ export const updateCart = createAsyncThunk(
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    cartItems,
-    shippingInfo,
-    paymentInfo,
+    cartItems: cartItems ? JSON.parse(cartItems) : [],
+    shippingInfo: shippingInfo ? JSON.parse(shippingInfo) : {},
+    paymentInfo: paymentInfo ? JSON.parse(paymentInfo) : {},
     loading: "idle",
     currentRequestId: undefined,
     error: null,
@@ -40,15 +40,15 @@ const cartSlice = createSlice({
       state.cartItems = state.cartItems.filter(
         (item) => item._id !== action.payload
       );
-      Cookie.set("pp-cartItems", JSON.stringify(state.cartItems));
+      Cookies.set("pp-cartItems", JSON.stringify(state.cartItems));
     },
     saveShippingInfo: (state, action) => {
       state.shippingInfo = action.payload;
-      Cookie.set("pp-shippingInfo", JSON.stringify(state.shippingInfo));
+      Cookies.set("pp-shippingInfo", JSON.stringify(state.shippingInfo));
     },
     savePaymentInfo: (state, action) => {
       state.paymentInfo = action.payload;
-      Cookie.set("pp-paymentInfo", JSON.stringify(state.paymentInfo));
+      Cookies.set("pp-paymentInfo", JSON.stringify(state.paymentInfo));
     },
   },
   extraReducers: {
@@ -73,7 +73,7 @@ const cartSlice = createSlice({
         } else {
           state.cartItems.push(action.payload);
         }
-        Cookie.set("pp-cartItems", JSON.stringify(state.cartItems));
+        Cookies.set("pp-cartItems", JSON.stringify(state.cartItems));
         state.currentRequestId = undefined;
       }
     },
