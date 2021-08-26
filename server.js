@@ -10,18 +10,9 @@ const MONGODB_URI = process.env.MONGODB_URI;
 const app = express();
 
 // DB Connect
-mongoose.connect(
-  MONGODB_URI,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false, // Allows us to use findOneAndUpdate()
-  },
-  () => {
-    console.log(`Mongo connected!`);
-  }
-);
+mongoose.connect(MONGODB_URI, () => {
+  console.log(`Mongo connected!`);
+});
 
 // Middleware
 app.use(express.json());
